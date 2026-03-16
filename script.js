@@ -50,9 +50,9 @@ window.addEventListener("load", updateActiveNav);
 if (typedText && !prefersReducedMotion.matches) {
   // Keep these short so the terminal effect stays readable and professional.
   const messages = [
-    "init --focus software-engineering systems security",
-    "tracking -> cloud infrastructure networking developer-platforms",
-    "current_state: building practical tools with real engineering intent"
+    "init --focus software-engineering systems networking",
+    "tracking -> cloud infrastructure network-visibility developer-platforms",
+    "current_state: building practical systems and networking tools"
   ];
 
   let messageIndex = 0;
@@ -88,7 +88,7 @@ if (typedText && !prefersReducedMotion.matches) {
 
   type();
 } else if (typedText) {
-  typedText.textContent = "focus: software engineering, systems, infrastructure, security";
+  typedText.textContent = "focus: software engineering, systems, networking, infrastructure";
 }
 
 if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
