@@ -250,15 +250,15 @@ const commandHandlers = {
     ),
   projects: () =>
     appendResponse(
-      "Featured builds:\n- SocketScout: asyncio-based concurrent port scanning, banner grabbing, and network visibility tooling\n- Thermodynamics Database: MySQL, Python, Bash, CSV ingestion, Linux automation"
+      "Featured builds:\n- SocketScout: asyncio-based concurrent port scanning, banner grabbing, and network visibility tooling\n  repo -> https://github.com/JoelBeau/socketscout\n- Thermodynamics Database: MySQL, Python, Bash, CSV ingestion, Linux automation\n  repo -> https://github.com/JoelBeau/thermo-database"
     ),
   socketscout: () =>
     appendResponse(
-      "SocketScout is a concurrent Python port scanner with asyncio-driven orchestration, optional SYN scanning, banner grabbing, and per-host state isolation for clean multi-target network analysis."
+      "SocketScout is a concurrent Python port scanner with asyncio-driven orchestration, optional SYN scanning, banner grabbing, and per-host state isolation for clean multi-target network analysis.\nrepo -> https://github.com/JoelBeau/socketscout"
     ),
   thermo: () =>
     appendResponse(
-      "Thermodynamics Database combines MySQL, SQL scripting, CSV ingestion, Bash automation, and Python lookup tooling in a Linux-first workflow."
+      "Thermodynamics Database combines MySQL, SQL scripting, CSV ingestion, Bash automation, and Python lookup tooling in a Linux-first workflow.\nrepo -> https://github.com/JoelBeau/thermo-database"
     ),
   skills: () =>
     appendResponse(
