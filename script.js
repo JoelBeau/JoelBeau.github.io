@@ -78,13 +78,13 @@ const virtualDirectories = {
 
 const fileContents = {
   "~/profile/about.txt":
-    "Joel Beauregard\n\nComputer Science / Software Engineering student at the University of Texas at Arlington focused on systems, networking, cloud infrastructure, cybersecurity, and practical developer tooling. I’m building toward software engineering roles where infrastructure awareness, technical depth, and real-world execution matter.\n\nMy strongest work sits close to production-minded engineering: network visibility, signal-rich tooling, automation, and developer-facing systems that solve concrete problems.",
+    "Joel Beauregard\n\nComputer Science / Software Engineering student at the University of Texas at Arlington focused on systems, networking, cloud infrastructure, cybersecurity, and practical developer tooling. I’m building toward software engineering roles where infrastructure awareness, technical depth, and real-world execution matter.\n\nMy strongest work sits close to production-minded engineering: network visibility, signal-rich tooling, automation, and developer-facing systems that solve concrete problems. I’m especially interested in software that takes messy operational or physical signals and turns them into something reliable, inspectable, and useful for engineers or users.\n\nAcross internships, research, and personal projects, a consistent theme in my work is building systems that expose hidden behavior clearly: network analytics at Oracle, sensor-driven captioning in research, and practical inspection tooling in projects like SocketScout.",
   "~/profile/oracle.log":
-    "Oracle | Software Engineering Intern | Summer 2025 | Returning Summer 2026\n\nResearched, designed, and documented a Network Traffic Analytics feature for Oracle Private Cloud Appliance focused on SR-IOV Virtual Cloud Network visibility and observability.\n\nHighlights:\n- Analyzed network traffic flows and system constraints to guide architecture and feature design.\n- Collaborated with senior engineers to prototype the feature and help lay the groundwork for a future customer-facing networking capability.\n- Built and validated feature infrastructure with Python and Bash, containerized with Podman, orchestrated in Kubernetes, and integrated into existing CI/CD pipelines.\n- Tested against Cisco switches and Oracle PCA hardware in production-like environments.\n- Ported 180+ Network Controller tests into a MySQL-backed containerized framework for more reliable validation and CI execution.\n- Improved test performance by about 80% and refactored over half of the ported tests to strengthen error handling, edge-case coverage, and diagnostics.",
+    "Oracle | Software Engineering Intern | Summer 2025 | Returning Summer 2026\n\nWorked on networking-focused infrastructure for Oracle Private Cloud Appliance, centered on a new Network Traffic Analytics feature for SR-IOV Virtual Cloud Network visibility and observability. The work combined feature research, systems reasoning, architecture support, CI/CD-aware tooling, and production-like test validation.\n\nHighlights:\n- Researched, designed, and documented the feature while analyzing network traffic flows and system constraints that shaped the architecture.\n- Collaborated with senior engineers to prototype the feature and lay the groundwork for a future customer-facing networking capability.\n- Built and validated feature infrastructure using Python and Bash, containerized with Podman, orchestrated in Kubernetes, and integrated into existing CI/CD pipelines.\n- Tested against Cisco switches and Oracle PCA hardware to confirm correctness under realistic network traffic and production-like conditions.\n- Ported 180+ Network Controller tests into a MySQL-backed containerized framework for stronger validation and repeatable CI execution.\n- Improved test performance by about 80% and refactored over half of the ported tests to strengthen diagnostics, edge-case coverage, and error handling.\n\nKey stack:\nPython, Bash, Podman, Kubernetes, MySQL, Cisco networking hardware, Oracle PCA, VCN-focused infrastructure work.",
   "~/profile/experience.log":
-    "Experience Overview\n\n1. Oracle - Software Engineering Intern\nNetworking-focused infrastructure work for Oracle PCA, spanning feature research/design, CI/CD-aware test infrastructure, containerization, hardware validation, and large-scale unit test modernization.\n\n2. Tacit Captions / The Hybrid Atelier - Research Assistant\nWorked with a six-person multidisciplinary team on a multi-modal caption rendering system for sensor-based feedback. Built Python + pandas data pipelines, implemented signal-processing logic, generated synchronized WebVTT captions, contributed to research writing, and connected implementation choices back to the literature on assistive and multi-modal captioning.",
+    "Experience Overview\n\n1. Oracle - Software Engineering Intern\nNetworking-focused infrastructure work for Oracle PCA, spanning feature research/design, CI/CD-aware test infrastructure, containerization, hardware validation, and large-scale unit test modernization. The work strengthened my interest in software that sits between systems internals, network visibility, and real production constraints.\n\n2. Tacit Captions / The Hybrid Atelier - Research Assistant\nWorked with a six-person multidisciplinary team on a multi-modal caption rendering system for sensor-based feedback. Built Python + pandas data pipelines, implemented signal-processing logic, generated synchronized WebVTT captions, contributed to research writing, and connected implementation choices back to the literature on assistive and multi-modal captioning.\n\nAcross both experiences, the pattern is consistent: understanding signals, validating them carefully, and turning them into systems that are easier for people to reason about and use.",
   "~/profile/skills.json":
-    '{\n  "languages": ["Python", "Java", "C", "SQL", "Bash"],\n  "tools": ["Git", "GitHub", "Docker", "Podman", "Kubernetes", "PyTest", "SQLAlchemy"],\n  "platforms": ["Linux", "MySQL"],\n  "focus": ["Systems", "Networking", "Cloud Infrastructure", "Security", "Automation"]\n}',
+    '{\n  "programming": ["Python", "Bash", "Java", "MySQL", "C", "C++"],\n  "technical": ["Ubuntu", "Computer Virtualization", "Podman", "Docker", "VCNs", "Git", "OCI", "Oracle PCA", "Kubernetes", "Helm Charts", "pandas", "PyTest", "SQLAlchemy"],\n  "focus": ["Systems", "Networking", "Cloud Infrastructure", "Security", "Automation"]\n}',
   "~/profile/contact.vcf":
     "GitHub: https://github.com/JoelBeau\nLinkedIn: https://www.linkedin.com/in/joel-beauregard-b74b54315\nEmail: available on request",
   "~/profile/resume.pdf":
@@ -94,16 +94,20 @@ const fileContents = {
   "~/profile/linkedin.link":
     "LinkedIn profile -> https://www.linkedin.com/in/joel-beauregard-b74b54315",
   "~/profile/projects/socketscout.md":
-    "SocketScout\nrepo -> https://github.com/JoelBeau/socketscout\n\nA high-performance concurrent port scanner built in Python around asyncio-driven orchestration, per-host state isolation, and modular service interrogation.\n\nHighlights:\n- Scans multiple hosts and large port ranges concurrently using non-blocking I/O.\n- Supports TCP connect scanning by default, optional SYN-based scanning, and modular banner grabbing.\n- Separates orchestration, networking primitives, validation, and output formatting cleanly.\n- Reflects my interest in networking internals, systems correctness, and practical security tooling.",
+    "SocketScout\nrepo -> https://github.com/JoelBeau/socketscout\n\nA high-performance concurrent port scanner built in Python around asyncio-driven orchestration, per-host state isolation, and modular service interrogation. The project reflects my interest in network visibility, low-level behavior, and practical security tooling that is useful beyond a classroom context.\n\nHighlights:\n- Scans multiple hosts and large port ranges concurrently using non-blocking I/O.\n- Supports TCP connect scanning by default, optional SYN-based scanning, and modular banner grabbing.\n- Separates orchestration, networking primitives, validation, and output formatting cleanly.\n- Emphasizes predictable behavior across multi-target scans through explicit per-host state handling.\n\nWhy it matters:\nSocketScout is one of the clearest examples of the kind of work I enjoy: technically grounded tooling that helps surface hidden network behavior in a way that is practical for debugging, inspection, and security-oriented workflows.",
   "~/profile/projects/thermo-database.md":
-    "Thermodynamics Database\nrepo -> https://github.com/JoelBeau/thermo-database\n\nA practical database and scripting project centered on storing and querying thermodynamic table values in a Linux-first workflow.\n\nHighlights:\n- Built a MySQL-backed database with SQL scripts and repeatable setup logic.\n- Used CSV ingestion, parsing, Bash automation, and Python lookup tooling to support efficient retrieval.\n- Demonstrates applied data organization, scripting, automation, and systems-oriented workflow design.",
+    "Thermodynamics Database\nrepo -> https://github.com/JoelBeau/thermo-database\n\nA practical database and scripting project centered on storing and querying thermodynamic table values in a Linux-first workflow. It combines relational data modeling, repeatable setup automation, and command-line tooling to make technical data easier to load, validate, and retrieve.\n\nHighlights:\n- Built a MySQL-backed database with SQL scripts and repeatable setup logic.\n- Used CSV ingestion, parsing, Bash automation, and Python lookup tooling to support efficient retrieval.\n- Structured the workflow so setup, population, and querying were easy to reproduce in a Linux environment.\n- Demonstrates applied data organization, scripting, automation, and systems-oriented workflow design.\n\nWhy it matters:\nEven though it is not networking-focused like SocketScout, it shows the same engineering pattern: take something tedious or fragmented, organize it carefully, automate the pipeline, and make it reliably usable.",
   "~/profile/projects/multi-modal-sensor-captioning.md":
-    "Multi-Modal Sensor Captioning System\n\nResearch-driven caption rendering system developed through Tacit Captions / The Hybrid Atelier.\n\nPaper context:\n- Associated with the paper 'TacitCaptions: Externalizing Tacit Skills within Neon Glass Bending Practices through Sensor-Video Synchronized Cues'.\n- Framed around externalizing tacit skill cues through synchronized sensor-video feedback.\n\nHighlights:\n- Built Python + pandas pipelines to extract, clean, analyze, and validate time-series sensor data.\n- Implemented signal-processing logic to detect state changes and map sensor behavior into synchronized WebVTT caption events.\n- Validated data pipelines against live sensor input and helped connect implementation details back to the paper's methodology and design goals.\n- Supported a multi-modal assistive captioning environment rather than a purely academic proof-of-concept."
+    "Multi-Modal Sensor Captioning System\n\nResearch-driven caption rendering system developed through Tacit Captions / The Hybrid Atelier.\n\nPaper context:\n- Associated with the paper 'TacitCaptions: Externalizing Tacit Skills within Neon Glass Bending Practices through Sensor-Video Synchronized Cues'.\n- Framed around externalizing tacit skill cues through synchronized sensor-video feedback in a craft-based environment.\n\nHighlights:\n- Built Python + pandas pipelines to extract, clean, analyze, and validate time-series sensor data.\n- Implemented signal-processing logic to detect state changes and map sensor behavior into synchronized WebVTT caption events.\n- Validated data pipelines against live sensor input and helped connect implementation details back to the paper's methodology and design goals.\n- Supported a multi-modal assistive captioning environment rather than a purely academic proof-of-concept.\n\nWhy it matters:\nThis project broadened my experience beyond infrastructure and networking into research systems work, but it still fits the same engineering pattern I care about: interpret noisy data carefully, build reliable pipelines around it, and surface useful information in a form that people can actually use."
 };
 
 const commandHistory = [];
 let historyIndex = -1;
 let currentDirectory = "~/profile";
+const isIndexPage =
+  window.location.pathname.endsWith("index.html") ||
+  window.location.pathname === "/" ||
+  window.location.pathname.endsWith("/joelbeauregard.github.io/");
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
@@ -124,7 +128,7 @@ if (navToggle && navMenu) {
 }
 
 const updateActiveNav = () => {
-  if (!sections.length) {
+  if (!sections.length || !isIndexPage) {
     return;
   }
 
@@ -132,7 +136,7 @@ const updateActiveNav = () => {
   const offset = window.scrollY + 140;
   let matchedSection = false;
 
-  sections.forEach((section) => {
+  sections.forEach((section, index) => {
     const id = section.getAttribute("id");
     const link = document.querySelector(`.nav-menu a[href="#${id}"], .nav-menu a[href$="#${id}"]`);
 
@@ -140,9 +144,12 @@ const updateActiveNav = () => {
       return;
     }
 
+    const atDocumentBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
     const isActive =
-      offset >= section.offsetTop &&
-      offset < section.offsetTop + section.offsetHeight;
+      (offset >= section.offsetTop &&
+      offset < section.offsetTop + section.offsetHeight) ||
+      (index === sections.length - 1 && atDocumentBottom);
 
     link.classList.toggle("active", isActive);
     if (isActive) {
@@ -298,13 +305,13 @@ const commandHandlers = {
   help: () => appendResponse(commandDocs.join("\n")),
   whoami: () =>
     appendResponse(
-      "Joel Beauregard | Software engineering student focused on systems, networking, cloud infrastructure, and security-minded tooling.\n\nI’m especially interested in practical engineering work that sits close to infrastructure, developer platforms, and network-aware software rather than purely classroom-scale builds."
+      "Joel Beauregard | Software engineering student focused on systems, networking, cloud infrastructure, and security-minded tooling.\n\nI’m especially interested in practical engineering work that sits close to infrastructure, developer platforms, and network-aware software rather than purely classroom-scale builds. The projects and experiences on this site are the strongest examples of that pattern: network analytics at Oracle, synchronized sensor-caption research, and developer-facing tooling like SocketScout.\n\nThe common thread is that I like systems that expose useful signals clearly, whether those signals come from network traffic, sensor streams, or operational workflows."
     ),
   about: () =>
     appendResponse(fileContents["~/profile/about.txt"]),
   focus: () =>
     appendResponse(
-      "Current focus areas:\n- Systems and networking\n- Cloud infrastructure and platform-minded software\n- Security-aware tooling\n- Developer experience and automation\n- Research and engineering work that turns signals into usable feedback"
+      "Current focus areas:\n- Systems and networking\n- Cloud infrastructure and platform-minded software\n- Security-aware tooling\n- Developer experience and automation\n- Research and engineering work that turns signals into usable feedback\n\nRight now I’m especially interested in software that sits one layer beneath the user-facing surface: observability, diagnostics, workflow automation, validation infrastructure, and tooling that makes complex behavior easier to reason about."
     ),
   experience: () =>
     appendResponse(fileContents["~/profile/experience.log"]),
@@ -314,7 +321,7 @@ const commandHandlers = {
     appendResponse(fileContents["~/profile/projects/multi-modal-sensor-captioning.md"]),
   projects: () =>
     appendResponse(
-      "Featured projects\n\n1. SocketScout\nConcurrent Python port scanner with asyncio-based orchestration, optional SYN scanning, banner grabbing, and clean per-host state isolation.\nrepo -> https://github.com/JoelBeau/socketscout\n\n2. Thermodynamics Database\nMySQL-backed lookup and automation project using SQL, Bash, CSV ingestion, and Python tooling.\nrepo -> https://github.com/JoelBeau/thermo-database\n\n3. Multi-Modal Sensor Captioning System\nResearch-driven caption rendering system that transformed live sensor data into synchronized WebVTT captions for a multi-modal feedback environment.\nUse 'cat multi-modal-sensor-captioning.md' after 'cd projects' for details."
+      "Featured projects\n\n1. SocketScout\nConcurrent Python port scanner with asyncio-based orchestration, optional SYN scanning, banner grabbing, and clean per-host state isolation.\nrepo -> https://github.com/JoelBeau/socketscout\nWhy it matters: shows my interest in networking internals, low-level behavior, and practical tooling.\n\n2. Thermodynamics Database\nMySQL-backed lookup and automation project using SQL, Bash, CSV ingestion, and Python tooling.\nrepo -> https://github.com/JoelBeau/thermo-database\nWhy it matters: shows structured data modeling, reproducible automation, and systems-minded workflow design.\n\n3. Multi-Modal Sensor Captioning System\nResearch-driven caption rendering system that transformed live sensor data into synchronized WebVTT captions for a multi-modal feedback environment.\nWhy it matters: shows signal processing, data validation, and research-backed implementation work.\n\nUse 'cd projects' and 'cat <file>' for full project dossiers."
     ),
   socketscout: () =>
     appendResponse(fileContents["~/profile/projects/socketscout.md"]),
@@ -322,7 +329,7 @@ const commandHandlers = {
     appendResponse(fileContents["~/profile/projects/thermo-database.md"]),
   skills: () =>
     appendResponse(
-      "Technical toolkit\n\nLanguages:\n- Python, Java, C, SQL, Bash\n\nTools:\n- Git, GitHub, Docker, Podman, Kubernetes, PyTest, SQLAlchemy\n\nPlatforms / Systems:\n- Linux, MySQL, networking fundamentals, cloud / infrastructure concepts\n\nWorking style:\n- Practical software engineering, automation, debugging, and system-aware implementation"
+      "Technical toolkit\n\nProgramming:\n- Python, Bash, Java, MySQL, C, C++\n\nTechnical:\n- Ubuntu, Linux, computer virtualization, Git, Docker, Podman, Kubernetes, Helm Charts, pandas, PyTest, SQLAlchemy\n- OCI, Oracle PCA, VCNs, MySQL, networking fundamentals, cloud / infrastructure concepts\n\nWorking style:\n- Practical software engineering, automation, debugging, data validation, and system-aware implementation\n\nI tend to use these tools in combinations that support repeatability and observability: containerized testing, scriptable setup, reproducible validation, and workflows that make underlying system behavior easier to inspect."
     ),
   education: () =>
     appendResponse(
