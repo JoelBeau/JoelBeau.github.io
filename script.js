@@ -26,6 +26,7 @@ const sectionSelectors = {
   projects: "index.html#projects",
   socketscout: "index.html#projects",
   thermo: "index.html#projects",
+  captions: "index.html#projects",
   skills: "index.html#skills",
   education: "index.html#education",
   contact: "index.html#contact"
@@ -34,19 +35,21 @@ const sectionSelectors = {
 const commandDocs = [
   "help          list available commands",
   "whoami        quick professional summary",
-  "about         summary of background and focus",
+  "about         in-depth background summary",
   "focus         current technical interests",
-  "experience    summary of experience trajectory",
+  "experience    detailed experience overview",
   "oracle        Oracle internship details",
+  "captions      Tacit Captions research details",
   "projects      featured project overview",
   "socketscout   networking project details",
   "thermo        thermodynamics database details",
   "skills        technical toolkit snapshot",
   "education     academic background",
   "contact       ways to reach me",
-  "ls            show terminal topics",
+  "ls            list items in the current directory",
   "pwd           show current terminal path",
-  "cat <file>    read portfolio topic files",
+  "cd <dir>      change directories",
+  "cat <file>    read a file in the current directory",
   "open <item>   jump to a section on the site",
   "github        open GitHub profile",
   "linkedin      open LinkedIn profile",
@@ -54,25 +57,53 @@ const commandDocs = [
   "clear         clear terminal output"
 ];
 
+const virtualDirectories = {
+  "~/profile": [
+    "about.txt",
+    "oracle.log",
+    "experience.log",
+    "projects/",
+    "skills.json",
+    "contact.vcf",
+    "resume.pdf",
+    "github.link",
+    "linkedin.link"
+  ],
+  "~/profile/projects": [
+    "socketscout.md",
+    "thermo-database.md",
+    "multi-modal-sensor-captioning.md"
+  ]
+};
+
 const fileContents = {
-  "about.txt":
-    "Joel Beauregard\nUTA Computer Science / Software Engineering student building systems, networking, cloud, and security-oriented software with a practical engineering mindset.",
-  "oracle.log":
-    "Oracle Private Cloud Appliance internship focused on SR-IOV VCN Network Traffic Analytics, network visibility, Kubernetes + Podman test infrastructure, and MySQL-backed CI-friendly validation.",
-  "skills.json":
-    '{\n  "languages": ["Python", "Java", "C", "SQL", "Bash"],\n  "platforms": ["Linux", "Docker", "Kubernetes", "MySQL"],\n  "focus": ["Systems", "Networking", "Cloud Infrastructure", "Security", "Automation"]\n}',
-  "contact.vcf":
+  "~/profile/about.txt":
+    "Joel Beauregard\n\nComputer Science / Software Engineering student at the University of Texas at Arlington focused on systems, networking, cloud infrastructure, cybersecurity, and practical developer tooling. I’m building toward software engineering roles where infrastructure awareness, technical depth, and real-world execution matter.\n\nMy strongest work sits close to production-minded engineering: network visibility, signal-rich tooling, automation, and developer-facing systems that solve concrete problems.",
+  "~/profile/oracle.log":
+    "Oracle | Software Engineering Intern | Summer 2025 | Returning Summer 2026\n\nResearched, designed, and documented a Network Traffic Analytics feature for Oracle Private Cloud Appliance focused on SR-IOV Virtual Cloud Network visibility and observability.\n\nHighlights:\n- Analyzed network traffic flows and system constraints to guide architecture and feature design.\n- Collaborated with senior engineers to prototype the feature and help lay the groundwork for a future customer-facing networking capability.\n- Built and validated feature infrastructure with Python and Bash, containerized with Podman, orchestrated in Kubernetes, and integrated into existing CI/CD pipelines.\n- Tested against Cisco switches and Oracle PCA hardware in production-like environments.\n- Ported 180+ Network Controller tests into a MySQL-backed containerized framework for more reliable validation and CI execution.\n- Improved test performance by about 80% and refactored over half of the ported tests to strengthen error handling, edge-case coverage, and diagnostics.",
+  "~/profile/experience.log":
+    "Experience Overview\n\n1. Oracle - Software Engineering Intern\nNetworking-focused infrastructure work for Oracle PCA, spanning feature research/design, CI/CD-aware test infrastructure, containerization, hardware validation, and large-scale unit test modernization.\n\n2. Tacit Captions / The Hybrid Atelier - Research Assistant\nWorked with a six-person multidisciplinary team on a multi-modal caption rendering system for sensor-based feedback. Built Python + pandas data pipelines, implemented signal-processing logic, generated synchronized WebVTT captions, contributed to research writing, and connected implementation choices back to the literature on assistive and multi-modal captioning.",
+  "~/profile/skills.json":
+    '{\n  "languages": ["Python", "Java", "C", "SQL", "Bash"],\n  "tools": ["Git", "GitHub", "Docker", "Podman", "Kubernetes", "PyTest", "SQLAlchemy"],\n  "platforms": ["Linux", "MySQL"],\n  "focus": ["Systems", "Networking", "Cloud Infrastructure", "Security", "Automation"]\n}',
+  "~/profile/contact.vcf":
     "GitHub: https://github.com/JoelBeau\nLinkedIn: https://www.linkedin.com/in/joel-beauregard-b74b54315\nEmail: available on request",
-  "resume.pdf":
+  "~/profile/resume.pdf":
     "Binary file preview unavailable here. Run 'resume' to open the PDF.",
-  "github.link":
+  "~/profile/github.link":
     "GitHub profile -> https://github.com/JoelBeau",
-  "linkedin.link":
-    "LinkedIn profile -> https://www.linkedin.com/in/joel-beauregard-b74b54315"
+  "~/profile/linkedin.link":
+    "LinkedIn profile -> https://www.linkedin.com/in/joel-beauregard-b74b54315",
+  "~/profile/projects/socketscout.md":
+    "SocketScout\nrepo -> https://github.com/JoelBeau/socketscout\n\nA high-performance concurrent port scanner built in Python around asyncio-driven orchestration, per-host state isolation, and modular service interrogation.\n\nHighlights:\n- Scans multiple hosts and large port ranges concurrently using non-blocking I/O.\n- Supports TCP connect scanning by default, optional SYN-based scanning, and modular banner grabbing.\n- Separates orchestration, networking primitives, validation, and output formatting cleanly.\n- Reflects my interest in networking internals, systems correctness, and practical security tooling.",
+  "~/profile/projects/thermo-database.md":
+    "Thermodynamics Database\nrepo -> https://github.com/JoelBeau/thermo-database\n\nA practical database and scripting project centered on storing and querying thermodynamic table values in a Linux-first workflow.\n\nHighlights:\n- Built a MySQL-backed database with SQL scripts and repeatable setup logic.\n- Used CSV ingestion, parsing, Bash automation, and Python lookup tooling to support efficient retrieval.\n- Demonstrates applied data organization, scripting, automation, and systems-oriented workflow design.",
+  "~/profile/projects/multi-modal-sensor-captioning.md":
+    "Multi-Modal Sensor Captioning System\n\nResearch-driven caption rendering system developed through Tacit Captions / The Hybrid Atelier.\n\nPaper context:\n- Associated with the paper 'TacitCaptions: Externalizing Tacit Skills within Neon Glass Bending Practices through Sensor-Video Synchronized Cues'.\n- Framed around externalizing tacit skill cues through synchronized sensor-video feedback.\n\nHighlights:\n- Built Python + pandas pipelines to extract, clean, analyze, and validate time-series sensor data.\n- Implemented signal-processing logic to detect state changes and map sensor behavior into synchronized WebVTT caption events.\n- Validated data pipelines against live sensor input and helped connect implementation details back to the paper's methodology and design goals.\n- Supported a multi-modal assistive captioning environment rather than a purely academic proof-of-concept."
 };
 
 const commandHistory = [];
 let historyIndex = -1;
+let currentDirectory = "~/profile";
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
@@ -97,7 +128,9 @@ const updateActiveNav = () => {
     return;
   }
 
+  const homeLink = document.querySelector('.nav-menu a[href="index.html"], .nav-menu a[href="#top"], .nav-menu a[href="index.html#top"]');
   const offset = window.scrollY + 140;
+  let matchedSection = false;
 
   sections.forEach((section) => {
     const id = section.getAttribute("id");
@@ -112,7 +145,14 @@ const updateActiveNav = () => {
       offset < section.offsetTop + section.offsetHeight;
 
     link.classList.toggle("active", isActive);
+    if (isActive) {
+      matchedSection = true;
+    }
   });
+
+  if (homeLink) {
+    homeLink.classList.toggle("active", !matchedSection || offset < (sections[0]?.offsetTop || 0));
+  }
 };
 
 window.addEventListener("scroll", updateActiveNav, { passive: true });
@@ -181,7 +221,7 @@ const appendPromptLine = (command) => {
   line.innerHTML = `
     <span class="prompt-user">joel@portfolio</span>
     <span class="prompt-divider">:</span>
-    <span class="prompt-path">~/profile</span>
+    <span class="prompt-path">${currentDirectory.replace('~/profile', '~/profile')}</span>
     <span class="prompt-symbol">$</span>
     <span class="terminal-command"></span>
   `;
@@ -214,6 +254,34 @@ const appendHtmlResponse = (content, className = "terminal-response") => {
   scrollTerminalToBottom();
 };
 
+const resolveDirectory = (target) => {
+  if (!target || target === "~" || target === "~/profile") {
+    return "~/profile";
+  }
+
+  if (target === "..") {
+    return currentDirectory === "~/profile/projects" ? "~/profile" : currentDirectory;
+  }
+
+  if (target === "projects" || target === "./projects" || target === "~/profile/projects") {
+    return "~/profile/projects";
+  }
+
+  return null;
+};
+
+const resolveFilePath = (target) => {
+  if (!target) {
+    return null;
+  }
+
+  if (target.startsWith("~/")) {
+    return target;
+  }
+
+  return `${currentDirectory}/${target}`;
+};
+
 const openSection = (key) => {
   const target = sectionSelectors[key];
 
@@ -230,53 +298,42 @@ const commandHandlers = {
   help: () => appendResponse(commandDocs.join("\n")),
   whoami: () =>
     appendResponse(
-      "Joel Beauregard | Software engineering student focused on systems, networking, cloud infrastructure, and security-minded tooling."
+      "Joel Beauregard | Software engineering student focused on systems, networking, cloud infrastructure, and security-minded tooling.\n\nI’m especially interested in practical engineering work that sits close to infrastructure, developer platforms, and network-aware software rather than purely classroom-scale builds."
     ),
   about: () =>
-    appendResponse(
-      "UTA Computer Science / Software Engineering student focused on systems, networking, cloud infrastructure, cybersecurity, and practical developer tooling."
-    ),
+    appendResponse(fileContents["~/profile/about.txt"]),
   focus: () =>
     appendResponse(
-      "Current focus areas:\n- Systems and networking\n- Cloud infrastructure\n- Security-minded engineering\n- Developer platforms and automation"
+      "Current focus areas:\n- Systems and networking\n- Cloud infrastructure and platform-minded software\n- Security-aware tooling\n- Developer experience and automation\n- Research and engineering work that turns signals into usable feedback"
     ),
   experience: () =>
-    appendResponse(
-      "Experience trajectory:\n- Oracle Software Engineering Intern, Summer 2025\n- Returning Oracle OCI intern, Summer 2026\n- Building practical systems and networking projects outside class"
-    ),
+    appendResponse(fileContents["~/profile/experience.log"]),
   oracle: () =>
-    appendResponse(
-      "Researched and documented Oracle PCA Network Traffic Analytics for SR-IOV VCN observability, built Kubernetes + Podman test infrastructure, validated against Cisco switches and PCA hardware, and improved a MySQL-backed test framework."
-    ),
+    appendResponse(fileContents["~/profile/oracle.log"]),
+  captions: () =>
+    appendResponse(fileContents["~/profile/projects/multi-modal-sensor-captioning.md"]),
   projects: () =>
     appendResponse(
-      "Featured builds:\n- SocketScout: asyncio-based concurrent port scanning, banner grabbing, and network visibility tooling\n  repo -> https://github.com/JoelBeau/socketscout\n- Thermodynamics Database: MySQL, Python, Bash, CSV ingestion, Linux automation\n  repo -> https://github.com/JoelBeau/thermo-database"
+      "Featured projects\n\n1. SocketScout\nConcurrent Python port scanner with asyncio-based orchestration, optional SYN scanning, banner grabbing, and clean per-host state isolation.\nrepo -> https://github.com/JoelBeau/socketscout\n\n2. Thermodynamics Database\nMySQL-backed lookup and automation project using SQL, Bash, CSV ingestion, and Python tooling.\nrepo -> https://github.com/JoelBeau/thermo-database\n\n3. Multi-Modal Sensor Captioning System\nResearch-driven caption rendering system that transformed live sensor data into synchronized WebVTT captions for a multi-modal feedback environment.\nUse 'cat multi-modal-sensor-captioning.md' after 'cd projects' for details."
     ),
   socketscout: () =>
-    appendResponse(
-      "SocketScout is a concurrent Python port scanner with asyncio-driven orchestration, optional SYN scanning, banner grabbing, and per-host state isolation for clean multi-target network analysis.\nrepo -> https://github.com/JoelBeau/socketscout"
-    ),
+    appendResponse(fileContents["~/profile/projects/socketscout.md"]),
   thermo: () =>
-    appendResponse(
-      "Thermodynamics Database combines MySQL, SQL scripting, CSV ingestion, Bash automation, and Python lookup tooling in a Linux-first workflow.\nrepo -> https://github.com/JoelBeau/thermo-database"
-    ),
+    appendResponse(fileContents["~/profile/projects/thermo-database.md"]),
   skills: () =>
     appendResponse(
-      "Core stack:\n- Languages: Python, Java, C, SQL, Bash\n- Platforms: Linux, Docker, Kubernetes, MySQL\n- Focus: systems, networking, cloud infrastructure, security, automation"
+      "Technical toolkit\n\nLanguages:\n- Python, Java, C, SQL, Bash\n\nTools:\n- Git, GitHub, Docker, Podman, Kubernetes, PyTest, SQLAlchemy\n\nPlatforms / Systems:\n- Linux, MySQL, networking fundamentals, cloud / infrastructure concepts\n\nWorking style:\n- Practical software engineering, automation, debugging, and system-aware implementation"
     ),
   education: () =>
     appendResponse(
-      "University of Texas at Arlington\nComputer Science / Software Engineering student"
+      "University of Texas at Arlington\nComputer Science / Software Engineering student\nExpected Graduation: May 2027\nGPA: 4.0\nCoursework: Secure Programming, Operating Systems, Databases, Computer Organization, Data Structures and Algorithms, Object-Oriented Programming"
     ),
   contact: () =>
     appendHtmlResponse(
       `Reach out via <a href="${links.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a>, <a href="${links.github}" target="_blank" rel="noreferrer">GitHub</a>, or email once contact details are finalized.`
     ),
-  ls: () =>
-    appendResponse(
-      "about.txt\noracle.log\nprojects/\nskills.json\ncontact.vcf\nresume.pdf\ngithub.link\nlinkedin.link"
-    ),
-  pwd: () => appendResponse("~/profile"),
+  ls: () => appendResponse(virtualDirectories[currentDirectory].join("\n")),
+  pwd: () => appendResponse(currentDirectory),
   github: () => {
     appendResponse(`opening ${links.github}`);
     openLink(links.github);
@@ -312,7 +369,7 @@ const runCommand = (rawInput) => {
     const target = (args[0] || "").toLowerCase();
 
     if (!target) {
-      appendResponse("usage: open <about|experience|oracle|projects|skills|education|contact|github|linkedin|resume>");
+      appendResponse("usage: open <about|experience|oracle|projects|captions|skills|education|contact|github|linkedin|resume>");
       return;
     }
 
@@ -326,20 +383,33 @@ const runCommand = (rawInput) => {
     return;
   }
 
-  if (normalizedCommand === "cat") {
-    const target = (args[0] || "").toLowerCase();
+  if (normalizedCommand === "cd") {
+    const target = resolveDirectory(args[0]);
 
     if (!target) {
-      appendResponse("usage: cat <about.txt|oracle.log|skills.json|contact.vcf|resume.pdf|github.link|linkedin.link>");
+      appendResponse(`cd: ${args[0] || ""}: No such directory`);
       return;
     }
 
-    if (!(target in fileContents)) {
-      appendResponse(`cat: ${target}: No such file`);
+    currentDirectory = target;
+    appendResponse(`directory changed -> ${currentDirectory}`);
+    return;
+  }
+
+  if (normalizedCommand === "cat") {
+    const filePath = resolveFilePath(args[0]);
+
+    if (!filePath) {
+      appendResponse("usage: cat <file>");
       return;
     }
 
-    appendResponse(fileContents[target]);
+    if (!(filePath in fileContents)) {
+      appendResponse(`cat: ${args[0]}: No such file`);
+      return;
+    }
+
+    appendResponse(fileContents[filePath]);
     return;
   }
 
@@ -359,8 +429,8 @@ const bootstrapTerminal = () => {
   }
 
   appendResponse("Portfolio terminal initialized.", "terminal-hint");
-  appendResponse("Type 'help' to explore Joel's background, experience, and projects.", "terminal-hint");
-  appendResponse("Good starter commands: help, whoami, oracle, socketscout, cat about.txt, open projects", "terminal-hint");
+  appendResponse("Type 'help' to explore Joel's background, experience, projects, and research work.", "terminal-hint");
+  appendResponse("Good starter commands: help, experience, oracle, captions, ls, cd projects, cat multi-modal-sensor-captioning.md", "terminal-hint");
 };
 
 if (terminalShell && terminalInput) {
