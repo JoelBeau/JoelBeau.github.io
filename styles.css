@@ -445,20 +445,90 @@ select {
   color: var(--accent-strong);
 }
 
-.typed-line {
-  color: var(--text-soft);
-  min-height: 2rem;
-  margin-top: 0.25rem;
+.terminal-shell {
+  padding: 0.2rem 0 0;
+  border-radius: 18px;
+  border: 1px solid rgba(117, 151, 181, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 22%),
+    rgba(6, 13, 21, 0.92);
 }
 
-.cursor {
-  display: inline-block;
-  width: 0.72ch;
-  height: 1.15em;
-  margin-left: 0.1rem;
-  background: var(--accent);
-  vertical-align: -0.15em;
-  animation: blink 1s steps(1, end) infinite;
+.terminal-output {
+  min-height: 12.5rem;
+  max-height: 18rem;
+  padding: 1rem 1rem 0.8rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 231, 195, 0.35) transparent;
+}
+
+.terminal-line,
+.terminal-response,
+.terminal-hint {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  color: var(--text-soft);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.terminal-command {
+  color: var(--text);
+}
+
+.terminal-response {
+  margin: 0 0 0.95rem;
+  color: var(--text-soft);
+  white-space: pre-wrap;
+}
+
+.terminal-response a {
+  color: var(--accent);
+}
+
+.terminal-hint {
+  margin: 0 0 0.95rem;
+  color: var(--text-muted);
+}
+
+.terminal-form {
+  border-top: 1px solid rgba(117, 151, 181, 0.12);
+  padding: 0.85rem 1rem 1rem;
+}
+
+.terminal-input-row {
+  display: grid;
+  grid-template-columns: auto auto auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.4rem;
+  cursor: text;
+}
+
+.terminal-input {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  color: var(--text);
+  background: transparent;
+  caret-color: var(--accent);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.92rem;
+}
+
+.terminal-input::placeholder {
+  color: rgba(150, 169, 191, 0.7);
+}
+
+.terminal-input:focus {
+  outline: none;
 }
 
 .status-grid {
@@ -698,12 +768,6 @@ select {
   transform: translateY(0);
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
 @media (max-width: 1080px) {
   .hero-grid,
   .about-grid,
@@ -805,6 +869,17 @@ select {
   .footer-content {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .terminal-output {
+    min-height: 11rem;
+    max-height: 16rem;
+  }
+
+  .terminal-input-row {
+    grid-template-columns: auto auto auto auto minmax(0, 1fr);
+    gap: 0.3rem;
+    font-size: 0.85rem;
   }
 }
 
