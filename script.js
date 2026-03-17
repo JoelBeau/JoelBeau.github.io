@@ -26,7 +26,7 @@ const projectNextButton = document.querySelector(".project-nav-next");
 const links = {
   github: "https://github.com/JoelBeau",
   linkedin: "https://www.linkedin.com/in/joel-beauregard-b74b54315",
-  resume: "assets/Joel_Beauregard_Resume.pdf"
+  resume: "assets/Joel Beauregard Resume.pdf"
 };
 
 const sectionSelectors = {
