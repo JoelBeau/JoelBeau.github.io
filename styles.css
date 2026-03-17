@@ -299,7 +299,7 @@ select {
 }
 
 .hero-headline {
-  max-width: 22ch;
+  max-width: 50ch;
   margin: 1rem 0 1.15rem;
   font-size: clamp(1.1rem, 2vw, 1.65rem);
   font-weight: 500;
@@ -500,6 +500,10 @@ select {
   scrollbar-color: rgba(120, 231, 195, 0.35) transparent;
 }
 
+.terminal-entry {
+  margin-bottom: 1rem;
+}
+
 .terminal-line,
 .terminal-response,
 .terminal-hint {
@@ -522,7 +526,7 @@ select {
 }
 
 .terminal-response {
-  margin: 0 0 0.95rem;
+  margin: 0.2rem 0 0;
   color: var(--text-soft);
   white-space: pre-wrap;
 }
@@ -781,7 +785,7 @@ select {
 
 .tech-tags span,
 .pill-list li {
-  padding: 0.48rem 0.75rem;
+  padding: 0.42rem 0.72rem;
   border-radius: 999px;
   border: 1px solid rgba(117, 151, 181, 0.18);
   background: rgba(117, 151, 181, 0.08);
@@ -804,7 +808,7 @@ select {
 }
 
 .skills-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .education-card,
@@ -815,10 +819,13 @@ select {
 .education-card {
   justify-content: space-between;
   gap: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.4fr);
 }
 
 .education-meta {
-  min-width: min(100%, 320px);
+  min-width: 0;
+  max-width: 42rem;
 }
 
 .education-meta p {
@@ -827,6 +834,11 @@ select {
 
 .education-meta span {
   color: var(--text-muted);
+}
+
+.education-coursework strong {
+  display: inline-block;
+  max-width: 38rem;
 }
 
 .contact-grid {
@@ -871,10 +883,13 @@ select {
 @media (max-width: 1080px) {
   .hero-grid,
   .about-grid,
-  .skills-grid,
   .contact-grid,
   .education-card {
     grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-grid-home {
@@ -968,6 +983,10 @@ select {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.8rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
   }
 
   .button {

@@ -12,6 +12,7 @@ const terminalShell = document.getElementById("terminal-shell");
 const terminalOutput = document.getElementById("terminal-output");
 const terminalForm = document.getElementById("terminal-form");
 const terminalInput = document.getElementById("terminal-input");
+const terminalPromptPath = document.querySelector(".terminal-input-row .prompt-path");
 
 const links = {
   github: "https://github.com/JoelBeau",
@@ -78,13 +79,13 @@ const virtualDirectories = {
 
 const fileContents = {
   "~/profile/about.txt":
-    "Joel Beauregard\n\nComputer Science / Software Engineering student at the University of Texas at Arlington focused on systems, networking, cloud infrastructure, cybersecurity, and practical developer tooling. I’m building toward software engineering roles where infrastructure awareness, technical depth, and real-world execution matter.\n\nMy strongest work sits close to production-minded engineering: network visibility, signal-rich tooling, automation, and developer-facing systems that solve concrete problems. I’m especially interested in software that takes messy operational or physical signals and turns them into something reliable, inspectable, and useful for engineers or users.\n\nAcross internships, research, and personal projects, a consistent theme in my work is building systems that expose hidden behavior clearly: network analytics at Oracle, sensor-driven captioning in research, and practical inspection tooling in projects like SocketScout.",
+    "Joel Beauregard\n\nComputer Science / Software Engineering student at the University of Texas at Arlington focused on systems, networking, cloud infrastructure, cybersecurity, containers, and practical developer tooling. I’m building toward software engineering roles where infrastructure awareness, technical depth, and real-world execution matter.\n\nMy strongest work sits close to production-minded engineering: network visibility, containerized infrastructure, automation, and developer-facing systems that solve concrete problems. I’m especially interested in software that is reliable, inspectable, and useful in real environments, whether that means networking analytics, containerized testing, or platform-oriented tooling.\n\nAcross internships, research, and personal projects, a consistent theme in my work is building systems that expose hidden behavior clearly and make workflows easier to trust: network analytics at Oracle, containerized validation pipelines, and practical inspection tooling in projects like SocketScout.",
   "~/profile/oracle.log":
     "Oracle | Software Engineering Intern | Summer 2025 | Returning Summer 2026\n\nWorked on networking-focused infrastructure for Oracle Private Cloud Appliance, centered on a new Network Traffic Analytics feature for SR-IOV Virtual Cloud Network visibility and observability. The work combined feature research, systems reasoning, architecture support, CI/CD-aware tooling, and production-like test validation.\n\nHighlights:\n- Researched, designed, and documented the feature while analyzing network traffic flows and system constraints that shaped the architecture.\n- Collaborated with senior engineers to prototype the feature and lay the groundwork for a future customer-facing networking capability.\n- Built and validated feature infrastructure using Python and Bash, containerized with Podman, orchestrated in Kubernetes, and integrated into existing CI/CD pipelines.\n- Tested against Cisco switches and Oracle PCA hardware to confirm correctness under realistic network traffic and production-like conditions.\n- Ported 180+ Network Controller tests into a MySQL-backed containerized framework for stronger validation and repeatable CI execution.\n- Improved test performance by about 80% and refactored over half of the ported tests to strengthen diagnostics, edge-case coverage, and error handling.\n\nKey stack:\nPython, Bash, Podman, Kubernetes, MySQL, Cisco networking hardware, Oracle PCA, VCN-focused infrastructure work.",
   "~/profile/experience.log":
-    "Experience Overview\n\n1. Oracle - Software Engineering Intern\nNetworking-focused infrastructure work for Oracle PCA, spanning feature research/design, CI/CD-aware test infrastructure, containerization, hardware validation, and large-scale unit test modernization. The work strengthened my interest in software that sits between systems internals, network visibility, and real production constraints.\n\n2. Tacit Captions / The Hybrid Atelier - Research Assistant\nWorked with a six-person multidisciplinary team on a multi-modal caption rendering system for sensor-based feedback. Built Python + pandas data pipelines, implemented signal-processing logic, generated synchronized WebVTT captions, contributed to research writing, and connected implementation choices back to the literature on assistive and multi-modal captioning.\n\nAcross both experiences, the pattern is consistent: understanding signals, validating them carefully, and turning them into systems that are easier for people to reason about and use.",
+    "Experience Overview\n\n1. Oracle - Software Engineering Intern\nNetworking-focused infrastructure work for Oracle PCA, spanning feature research and design, CI/CD-aware test infrastructure, containerization, hardware validation, and large-scale unit test modernization. The work strengthened my interest in software that sits between systems internals, network visibility, and real production constraints.\n\n2. Tacit Captions / The Hybrid Atelier - Research Assistant\nWorked with a six-person multidisciplinary team on a multi-modal caption rendering system for sensor-based feedback. Built Python + pandas data pipelines, implemented caption-generation logic, generated synchronized WebVTT captions, contributed to research writing, and connected implementation choices back to the literature on assistive and multi-modal captioning.\n\nAcross both experiences, the pattern is consistent: take complex technical inputs, validate them carefully, and turn them into systems that are easier for people to reason about and use.",
   "~/profile/skills.json":
-    '{\n  "programming": ["Python", "Bash", "Java", "MySQL", "C", "C++"],\n  "technical": ["Ubuntu", "Computer Virtualization", "Podman", "Docker", "VCNs", "Git", "OCI", "Oracle PCA", "Kubernetes", "Helm Charts", "pandas", "PyTest", "SQLAlchemy"],\n  "focus": ["Systems", "Networking", "Cloud Infrastructure", "Security", "Automation"]\n}',
+    '{\n  "programming": ["Python", "Bash", "Java", "MySQL", "C", "C++"],\n  "technical": ["Ubuntu", "Computer Virtualization", "Podman", "Docker", "VCNs", "Git", "OCI", "Oracle PCA", "Kubernetes", "Helm Charts", "pandas", "PyTest", "SQLAlchemy"],\n  "focus": ["Systems", "Networking", "Cloud Infrastructure", "Containers", "Security", "Automation"]\n}',
   "~/profile/contact.vcf":
     "GitHub: https://github.com/JoelBeau\nLinkedIn: https://www.linkedin.com/in/joel-beauregard-b74b54315\nEmail: available on request",
   "~/profile/resume.pdf":
@@ -98,12 +99,13 @@ const fileContents = {
   "~/profile/projects/thermo-database.md":
     "Thermodynamics Database\nrepo -> https://github.com/JoelBeau/thermo-database\n\nA practical database and scripting project centered on storing and querying thermodynamic table values in a Linux-first workflow. It combines relational data modeling, repeatable setup automation, and command-line tooling to make technical data easier to load, validate, and retrieve.\n\nHighlights:\n- Built a MySQL-backed database with SQL scripts and repeatable setup logic.\n- Used CSV ingestion, parsing, Bash automation, and Python lookup tooling to support efficient retrieval.\n- Structured the workflow so setup, population, and querying were easy to reproduce in a Linux environment.\n- Demonstrates applied data organization, scripting, automation, and systems-oriented workflow design.\n\nWhy it matters:\nEven though it is not networking-focused like SocketScout, it shows the same engineering pattern: take something tedious or fragmented, organize it carefully, automate the pipeline, and make it reliably usable.",
   "~/profile/projects/multi-modal-sensor-captioning.md":
-    "Multi-Modal Sensor Captioning System\n\nResearch-driven caption rendering system developed through Tacit Captions / The Hybrid Atelier.\n\nPaper context:\n- Associated with the paper 'TacitCaptions: Externalizing Tacit Skills within Neon Glass Bending Practices through Sensor-Video Synchronized Cues'.\n- Framed around externalizing tacit skill cues through synchronized sensor-video feedback in a craft-based environment.\n\nHighlights:\n- Built Python + pandas pipelines to extract, clean, analyze, and validate time-series sensor data.\n- Implemented signal-processing logic to detect state changes and map sensor behavior into synchronized WebVTT caption events.\n- Validated data pipelines against live sensor input and helped connect implementation details back to the paper's methodology and design goals.\n- Supported a multi-modal assistive captioning environment rather than a purely academic proof-of-concept.\n\nWhy it matters:\nThis project broadened my experience beyond infrastructure and networking into research systems work, but it still fits the same engineering pattern I care about: interpret noisy data carefully, build reliable pipelines around it, and surface useful information in a form that people can actually use."
+    "Multi-Modal Sensor Captioning System\n\nResearch-driven caption rendering system developed through Tacit Captions / The Hybrid Atelier.\n\nPaper context:\n- Associated with the paper 'TacitCaptions: Externalizing Tacit Skills within Neon Glass Bending Practices through Sensor-Video Synchronized Cues'.\n- Framed around externalizing tacit skill cues through synchronized sensor-video feedback in a craft-based environment.\n\nHighlights:\n- Built Python + pandas pipelines to extract, clean, analyze, and validate time-series sensor data.\n- Implemented caption-generation logic to detect state changes and map sensor behavior into synchronized WebVTT caption events.\n- Validated data pipelines against live sensor input and helped connect implementation details back to the paper's methodology and design goals.\n- Supported a multi-modal assistive captioning environment rather than a purely academic proof-of-concept.\n\nWhy it matters:\nThis project broadened my experience beyond infrastructure and networking into research systems work, but it still fits the same engineering pattern I care about: interpret technical inputs carefully, build reliable pipelines around them, and surface useful information in a form that people can actually use."
 };
 
 const commandHistory = [];
 let historyIndex = -1;
 let currentDirectory = "~/profile";
+let activeTerminalEntry = null;
 const isIndexPage =
   window.location.pathname.endsWith("index.html") ||
   window.location.pathname === "/" ||
@@ -133,32 +135,36 @@ const updateActiveNav = () => {
   }
 
   const homeLink = document.querySelector('.nav-menu a[href="index.html"], .nav-menu a[href="#top"], .nav-menu a[href="index.html#top"]');
-  const offset = window.scrollY + 140;
-  let matchedSection = false;
+  const offset = window.scrollY + 180;
+  const sectionNavMap = {
+    about: "about",
+    experience: "experience",
+    projects: "projects",
+    explore: "projects",
+    skills: "skills",
+    education: "education",
+    contact: "contact"
+  };
 
-  sections.forEach((section, index) => {
-    const id = section.getAttribute("id");
-    const link = document.querySelector(`.nav-menu a[href="#${id}"], .nav-menu a[href$="#${id}"]`);
+  let activeKey = null;
 
-    if (!link) {
-      return;
-    }
-
-    const atDocumentBottom =
-      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-    const isActive =
-      (offset >= section.offsetTop &&
-      offset < section.offsetTop + section.offsetHeight) ||
-      (index === sections.length - 1 && atDocumentBottom);
-
-    link.classList.toggle("active", isActive);
-    if (isActive) {
-      matchedSection = true;
+  sections.forEach((section) => {
+    if (sections.len)
+    if (offset >= section.offsetTop) {
+      activeKey = sectionNavMap[section.id] || activeKey;
     }
   });
 
-  if (homeLink) {
-    homeLink.classList.toggle("active", !matchedSection || offset < (sections[0]?.offsetTop || 0));
+  document.querySelectorAll(".nav-menu a").forEach((link) => link.classList.remove("active"));
+
+  if (!activeKey) {
+    homeLink?.classList.add("active");
+    return;
+  }
+
+  const activeLink = document.querySelector(`.nav-menu a[href$="#${activeKey}"]`);
+  if (activeLink) {
+    activeLink.classList.add("active");
   }
 };
 
@@ -220,9 +226,11 @@ const scrollTerminalToBottom = () => {
 
 const appendPromptLine = (command) => {
   if (!terminalOutput) {
-    return;
+    return null;
   }
 
+  const entry = document.createElement("div");
+  entry.className = "terminal-entry";
   const line = document.createElement("p");
   line.className = "terminal-line";
   line.innerHTML = `
@@ -234,31 +242,43 @@ const appendPromptLine = (command) => {
   `;
 
   line.querySelector(".terminal-command").textContent = command;
-  terminalOutput.appendChild(line);
+  entry.appendChild(line);
+  terminalOutput.appendChild(entry);
+  return entry;
 };
 
 const appendResponse = (content, className = "terminal-response") => {
-  if (!terminalOutput) {
+  const target = activeTerminalEntry || terminalOutput;
+
+  if (!target) {
     return;
   }
 
   const block = document.createElement("div");
   block.className = className;
   block.textContent = content;
-  terminalOutput.appendChild(block);
+  target.appendChild(block);
   scrollTerminalToBottom();
 };
 
 const appendHtmlResponse = (content, className = "terminal-response") => {
-  if (!terminalOutput) {
+  const target = activeTerminalEntry || terminalOutput;
+
+  if (!target) {
     return;
   }
 
   const block = document.createElement("div");
   block.className = className;
   block.innerHTML = content;
-  terminalOutput.appendChild(block);
+  target.appendChild(block);
   scrollTerminalToBottom();
+};
+
+const setTerminalPromptPath = () => {
+  if (terminalPromptPath) {
+    terminalPromptPath.textContent = currentDirectory;
+  }
 };
 
 const resolveDirectory = (target) => {
@@ -301,17 +321,44 @@ const openSection = (key) => {
   window.location.href = target;
 };
 
+const getDirectoryEntries = () => virtualDirectories[currentDirectory] || [];
+
+const getCommandMatches = (fragment) =>
+  Object.keys(commandHandlers)
+    .concat(["open", "cd", "cat"])
+    .filter((item, index, array) => array.indexOf(item) === index && item.startsWith(fragment));
+
+const getPathMatches = (command, fragment) => {
+  if (command === "cd") {
+    return ["projects", "..", "~", "~/profile", "~/profile/projects"].filter((item) => item.startsWith(fragment));
+  }
+
+  if (command === "cat") {
+    return getDirectoryEntries()
+      .filter((item) => !item.endsWith("/"))
+      .filter((item) => item.startsWith(fragment));
+  }
+
+  if (command === "open") {
+    return Object.keys(sectionSelectors)
+      .concat(Object.keys(links))
+      .filter((item, index, array) => array.indexOf(item) === index && item.startsWith(fragment));
+  }
+
+  return [];
+};
+
 const commandHandlers = {
   help: () => appendResponse(commandDocs.join("\n")),
   whoami: () =>
     appendResponse(
-      "Joel Beauregard | Software engineering student focused on systems, networking, cloud infrastructure, and security-minded tooling.\n\nI’m especially interested in practical engineering work that sits close to infrastructure, developer platforms, and network-aware software rather than purely classroom-scale builds. The projects and experiences on this site are the strongest examples of that pattern: network analytics at Oracle, synchronized sensor-caption research, and developer-facing tooling like SocketScout.\n\nThe common thread is that I like systems that expose useful signals clearly, whether those signals come from network traffic, sensor streams, or operational workflows."
+      "Joel Beauregard | Software engineering student focused on systems, networking, cloud infrastructure, containers, and security-minded tooling.\n\nI’m especially interested in practical engineering work that sits close to infrastructure, developer platforms, containerized applications, and network-aware software rather than purely classroom-scale builds. The projects and experiences on this site are strong examples of that pattern: network analytics at Oracle, synchronized captioning research, and developer-facing tooling like SocketScout.\n\nThe common thread is that I like building software that is inspectable, repeatable, and useful in realistic environments, whether that means containerized validation, networking visibility, or automation that makes engineering workflows easier to trust."
     ),
   about: () =>
     appendResponse(fileContents["~/profile/about.txt"]),
   focus: () =>
     appendResponse(
-      "Current focus areas:\n- Systems and networking\n- Cloud infrastructure and platform-minded software\n- Security-aware tooling\n- Developer experience and automation\n- Research and engineering work that turns signals into usable feedback\n\nRight now I’m especially interested in software that sits one layer beneath the user-facing surface: observability, diagnostics, workflow automation, validation infrastructure, and tooling that makes complex behavior easier to reason about."
+      "Current focus areas:\n- Systems and networking\n- Cloud infrastructure and platform-minded software\n- Containers and containerized application workflows\n- Security-aware tooling\n- Developer experience and automation\n\nRight now I’m especially interested in software that sits one layer beneath the user-facing surface: observability, diagnostics, workflow automation, validation infrastructure, containerized testing, and tooling that makes complex behavior easier to reason about."
     ),
   experience: () =>
     appendResponse(fileContents["~/profile/experience.log"]),
@@ -321,7 +368,7 @@ const commandHandlers = {
     appendResponse(fileContents["~/profile/projects/multi-modal-sensor-captioning.md"]),
   projects: () =>
     appendResponse(
-      "Featured projects\n\n1. SocketScout\nConcurrent Python port scanner with asyncio-based orchestration, optional SYN scanning, banner grabbing, and clean per-host state isolation.\nrepo -> https://github.com/JoelBeau/socketscout\nWhy it matters: shows my interest in networking internals, low-level behavior, and practical tooling.\n\n2. Thermodynamics Database\nMySQL-backed lookup and automation project using SQL, Bash, CSV ingestion, and Python tooling.\nrepo -> https://github.com/JoelBeau/thermo-database\nWhy it matters: shows structured data modeling, reproducible automation, and systems-minded workflow design.\n\n3. Multi-Modal Sensor Captioning System\nResearch-driven caption rendering system that transformed live sensor data into synchronized WebVTT captions for a multi-modal feedback environment.\nWhy it matters: shows signal processing, data validation, and research-backed implementation work.\n\nUse 'cd projects' and 'cat <file>' for full project dossiers."
+      "Featured projects\n\n1. SocketScout\nConcurrent Python port scanner with asyncio-based orchestration, optional SYN scanning, banner grabbing, and clean per-host state isolation.\nrepo -> https://github.com/JoelBeau/socketscout\nWhy it matters: shows my interest in networking internals, low-level behavior, and practical tooling.\n\n2. Thermodynamics Database\nMySQL-backed lookup and automation project using SQL, Bash, CSV ingestion, and Python tooling.\nrepo -> https://github.com/JoelBeau/thermo-database\nWhy it matters: shows structured data modeling, reproducible automation, and systems-minded workflow design.\n\n3. Multi-Modal Sensor Captioning System\nResearch-driven caption rendering system that transformed live sensor data into synchronized WebVTT captions for a multi-modal feedback environment.\nWhy it matters: shows data validation, caption-generation workflows, and research-backed implementation work.\n\nUse 'cd projects' and 'cat <file>' for full project dossiers."
     ),
   socketscout: () =>
     appendResponse(fileContents["~/profile/projects/socketscout.md"]),
@@ -329,7 +376,7 @@ const commandHandlers = {
     appendResponse(fileContents["~/profile/projects/thermo-database.md"]),
   skills: () =>
     appendResponse(
-      "Technical toolkit\n\nProgramming:\n- Python, Bash, Java, MySQL, C, C++\n\nTechnical:\n- Ubuntu, Linux, computer virtualization, Git, Docker, Podman, Kubernetes, Helm Charts, pandas, PyTest, SQLAlchemy\n- OCI, Oracle PCA, VCNs, MySQL, networking fundamentals, cloud / infrastructure concepts\n\nWorking style:\n- Practical software engineering, automation, debugging, data validation, and system-aware implementation\n\nI tend to use these tools in combinations that support repeatability and observability: containerized testing, scriptable setup, reproducible validation, and workflows that make underlying system behavior easier to inspect."
+      "Technical toolkit\n\nProgramming:\n- Python, Bash, Java, C, C++, SQL, MySQL\n\nContainers and platforms:\n- Docker, Podman, Kubernetes, Helm Charts, OCI, Oracle PCA, Ubuntu, Linux, computer virtualization\n\nData and testing:\n- pandas, SQLAlchemy, PyTest, relational modeling, query design, MySQL-backed validation workflows\n\nSystems and networking:\n- VCNs, networking fundamentals, cloud / infrastructure concepts, developer tooling, automation scripts\n\nWorking style:\n- Practical software engineering, debugging, automation, containerized validation, and system-aware implementation\n\nI tend to use these tools in combinations that support repeatability and observability: containerized testing, scriptable setup, reproducible validation, and workflows that make underlying system behavior easier to inspect."
     ),
   education: () =>
     appendResponse(
@@ -367,7 +414,7 @@ const runCommand = (rawInput) => {
     return;
   }
 
-  appendPromptLine(input);
+  activeTerminalEntry = appendPromptLine(input);
 
   const [command, ...args] = input.split(/\s+/);
   const normalizedCommand = command.toLowerCase();
@@ -377,16 +424,19 @@ const runCommand = (rawInput) => {
 
     if (!target) {
       appendResponse("usage: open <about|experience|oracle|projects|captions|skills|education|contact|github|linkedin|resume>");
+      activeTerminalEntry = null;
       return;
     }
 
     if (target in links) {
       appendResponse(`opening ${links[target]}`);
       openLink(links[target]);
+      activeTerminalEntry = null;
       return;
     }
 
     openSection(target);
+    activeTerminalEntry = null;
     return;
   }
 
@@ -395,11 +445,14 @@ const runCommand = (rawInput) => {
 
     if (!target) {
       appendResponse(`cd: ${args[0] || ""}: No such directory`);
+      activeTerminalEntry = null;
       return;
     }
 
     currentDirectory = target;
+    setTerminalPromptPath();
     appendResponse(`directory changed -> ${currentDirectory}`);
+    activeTerminalEntry = null;
     return;
   }
 
@@ -408,26 +461,31 @@ const runCommand = (rawInput) => {
 
     if (!filePath) {
       appendResponse("usage: cat <file>");
+      activeTerminalEntry = null;
       return;
     }
 
     if (!(filePath in fileContents)) {
       appendResponse(`cat: ${args[0]}: No such file`);
+      activeTerminalEntry = null;
       return;
     }
 
     appendResponse(fileContents[filePath]);
+    activeTerminalEntry = null;
     return;
   }
 
   if (normalizedCommand in commandHandlers) {
     commandHandlers[normalizedCommand](args);
+    activeTerminalEntry = null;
     return;
   }
 
   appendResponse(
     `command not found: ${normalizedCommand}\nType 'help' to see available portfolio commands.`
   );
+  activeTerminalEntry = null;
 };
 
 const bootstrapTerminal = () => {
@@ -482,9 +540,40 @@ if (terminalForm && terminalInput) {
 
       historyIndex = Math.min(commandHistory.length, historyIndex + 1);
       terminalInput.value = commandHistory[historyIndex] || "";
+      return;
+    }
+
+    if (event.key === "Tab") {
+      event.preventDefault();
+
+      const value = terminalInput.value;
+      const parts = value.split(/\s+/);
+
+      if (parts.length <= 1 && !value.includes(" ")) {
+        const fragment = value.trim().toLowerCase();
+        const matches = getCommandMatches(fragment);
+
+        if (matches.length === 1) {
+          terminalInput.value = matches[0];
+        } else if (matches.length > 1) {
+          appendResponse(`autocomplete: ${matches.join("  ")}`, "terminal-hint");
+        }
+        return;
+      }
+
+      const command = parts[0].toLowerCase();
+      const argumentFragment = value.slice(command.length).trimStart();
+      const matches = getPathMatches(command, argumentFragment);
+
+      if (matches.length === 1) {
+        terminalInput.value = `${command} ${matches[0]}`;
+      } else if (matches.length > 1) {
+        appendResponse(`autocomplete: ${matches.join("  ")}`, "terminal-hint");
+      }
     }
   });
 
+  setTerminalPromptPath();
   bootstrapTerminal();
 }
 
