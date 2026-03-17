@@ -277,6 +277,15 @@ select {
   align-items: center;
 }
 
+.hero-grid-home {
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 1.05fr);
+}
+
+.dive-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
 .hero-copy {
   position: relative;
 }
@@ -290,7 +299,7 @@ select {
 }
 
 .hero-headline {
-  max-width: 13ch;
+  max-width: 18ch;
   margin: 1rem 0 1.15rem;
   font-size: clamp(1.3rem, 2.6vw, 2rem);
   font-weight: 500;
@@ -332,12 +341,12 @@ select {
 }
 
 .button-primary {
-  background: rgba(117, 151, 181, 0.08);
+  background: transparent;
   border-color: rgba(117, 151, 181, 0.2);
 }
 
 .button-secondary {
-  background: rgba(117, 151, 181, 0.1);
+  background: transparent;
   border-color: rgba(117, 151, 181, 0.2);
 }
 
@@ -430,6 +439,10 @@ select {
   padding: 1.3rem 1.3rem 1.45rem;
 }
 
+.hero-panel {
+  min-width: 0;
+}
+
 .prompt-line,
 .typed-line,
 .footer-accent {
@@ -519,6 +532,62 @@ select {
 .terminal-hint {
   margin: 0 0 0.95rem;
   color: var(--text-muted);
+}
+
+.explore-panel-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.explore-panel-body h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.explore-panel-body p {
+  max-width: 58ch;
+  margin: 0;
+}
+
+.explore-actions {
+  flex-shrink: 0;
+}
+
+.dive-copy {
+  max-width: 860px;
+}
+
+.dive-terminal-section {
+  padding-top: 1rem;
+}
+
+.dive-terminal-panel {
+  max-width: none;
+}
+
+.dive-terminal-panel .panel-body {
+  padding: 1.4rem;
+}
+
+.dive-terminal-heading {
+  max-width: 900px;
+  margin-bottom: 1rem;
+}
+
+.dive-terminal-heading h2 {
+  margin: 0;
+  font-size: clamp(1.55rem, 2.6vw, 2.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.dive-terminal-panel .terminal-output {
+  min-height: 22rem;
+  max-height: 32rem;
 }
 
 .terminal-form {
@@ -809,6 +878,10 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .hero-grid-home {
+    grid-template-columns: 1fr;
+  }
+
   .project-card-featured,
   .project-card:not(.project-card-featured),
   .project-card-placeholder {
@@ -876,6 +949,11 @@ select {
   .section-kicker {
     white-space: normal;
   }
+
+  .explore-panel-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 640px) {
@@ -888,7 +966,7 @@ select {
   }
 
   .hero-headline {
-    max-width: none;
+    max-width: 13ch;
   }
 
   .hero-cta {
@@ -916,6 +994,11 @@ select {
     grid-template-columns: auto auto auto auto minmax(0, 1fr);
     gap: 0.3rem;
     font-size: 0.85rem;
+  }
+
+  .dive-terminal-panel .terminal-output {
+    min-height: 16rem;
+    max-height: 24rem;
   }
 }
 

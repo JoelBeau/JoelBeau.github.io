@@ -41,6 +41,7 @@
         </button>
 
         <div class="nav-menu" id="nav-menu">
+          <a href="index.html#top">Home</a>
           <a href="index.html#about">About</a>
           <a href="index.html#experience">Experience</a>
           <a href="index.html#projects">Projects</a>
@@ -54,8 +55,8 @@
 
     <main>
       <section class="hero section" aria-labelledby="dive-title">
-        <div class="container hero-grid">
-          <div class="hero-copy">
+        <div class="container dive-layout">
+          <div class="hero-copy dive-copy">
             <p class="section-kicker">
               <span class="status-dot"></span>
               status: interactive / explore commands / systems + networking
@@ -75,24 +76,13 @@
               <a class="button button-ghost" href="https://github.com/JoelBeau" target="_blank" rel="noreferrer">GitHub</a>
               <a class="button button-ghost" href="https://www.linkedin.com/in/joel-beauregard-b74b54315" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
-
-            <ul class="hero-metrics" aria-label="Dive deeper highlights">
-              <li>
-                <span class="metric-label">commands</span>
-                <strong>help, whoami, oracle, socketscout</strong>
-              </li>
-              <li>
-                <span class="metric-label">navigation</span>
-                <strong>open projects, open experience, resume</strong>
-              </li>
-              <li>
-                <span class="metric-label">style</span>
-                <strong>interactive terminal, same portfolio voice</strong>
-              </li>
-            </ul>
           </div>
+        </div>
+      </section>
 
-          <aside class="terminal-panel hero-panel" aria-label="Interactive portfolio terminal">
+      <section class="section dive-terminal-section" aria-labelledby="dive-terminal-title">
+        <div class="container">
+          <aside class="terminal-panel dive-terminal-panel" aria-label="Interactive portfolio terminal">
             <div class="panel-header">
               <span class="panel-dot panel-dot-red"></span>
               <span class="panel-dot panel-dot-amber"></span>
@@ -100,6 +90,10 @@
               <span class="panel-title">/terminal/dive-deeper</span>
             </div>
             <div class="panel-body">
+              <div class="dive-terminal-heading">
+                <p class="section-label">/terminal</p>
+                <h2 id="dive-terminal-title">Try commands like `help`, `oracle`, `socketscout`, `skills`, or `open projects`.</h2>
+              </div>
               <div
                 class="terminal-shell"
                 id="terminal-shell"
@@ -127,25 +121,6 @@
                     >
                   </label>
                 </form>
-              </div>
-
-              <div class="status-grid">
-                <article>
-                  <span class="mini-label">suggested</span>
-                  <strong>help</strong>
-                </article>
-                <article>
-                  <span class="mini-label">project</span>
-                  <strong>socketscout</strong>
-                </article>
-                <article>
-                  <span class="mini-label">experience</span>
-                  <strong>oracle</strong>
-                </article>
-                <article>
-                  <span class="mini-label">navigation</span>
-                  <strong>open projects</strong>
-                </article>
               </div>
             </div>
           </aside>
