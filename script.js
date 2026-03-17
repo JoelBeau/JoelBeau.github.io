@@ -13,6 +13,10 @@ const terminalOutput = document.getElementById("terminal-output");
 const terminalForm = document.getElementById("terminal-form");
 const terminalInput = document.getElementById("terminal-input");
 const terminalPromptPath = document.querySelector(".terminal-input-row .prompt-path");
+const skillsTrack = document.getElementById("skills-track");
+const skillsCards = skillsTrack ? Array.from(skillsTrack.querySelectorAll(".skills-card")) : [];
+const skillsPrevButton = document.querySelector(".skills-nav-prev");
+const skillsNextButton = document.querySelector(".skills-nav-next");
 
 const links = {
   github: "https://github.com/JoelBeau",
@@ -105,7 +109,6 @@ const fileContents = {
 const commandHistory = [];
 let historyIndex = -1;
 let currentDirectory = "~/profile";
-let activeTerminalEntry = null;
 const isIndexPage =
   window.location.pathname.endsWith("index.html") ||
   window.location.pathname === "/" ||
@@ -136,6 +139,7 @@ const updateActiveNav = () => {
 
   const homeLink = document.querySelector('.nav-menu a[href="index.html"], .nav-menu a[href="#top"], .nav-menu a[href="index.html#top"]');
   const offset = window.scrollY + 180;
+  const atPageEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
   const sectionNavMap = {
     about: "about",
     experience: "experience",
@@ -149,8 +153,9 @@ const updateActiveNav = () => {
   let activeKey = null;
 
   sections.forEach((section) => {
-    if (sections.len)
-    if (offset >= section.offsetTop) {
+    if (atPageEnd && section.id === "contact") {
+      activeKey = "contact";
+    } else if (offset >= section.offsetTop) {
       activeKey = sectionNavMap[section.id] || activeKey;
     }
   });
@@ -224,55 +229,87 @@ const scrollTerminalToBottom = () => {
   }
 };
 
-const appendPromptLine = (command) => {
-  if (!terminalOutput) {
-    return null;
+const clearTerminalOutput = () => {
+  if (terminalOutput) {
+    terminalOutput.innerHTML = "";
+    terminalOutput.classList.add("is-empty");
   }
 
-  const entry = document.createElement("div");
-  entry.className = "terminal-entry";
-  const line = document.createElement("p");
-  line.className = "terminal-line";
-  line.innerHTML = `
-    <span class="prompt-user">joel@portfolio</span>
-    <span class="prompt-divider">:</span>
-    <span class="prompt-path">${currentDirectory.replace('~/profile', '~/profile')}</span>
-    <span class="prompt-symbol">$</span>
-    <span class="terminal-command"></span>
-  `;
-
-  line.querySelector(".terminal-command").textContent = command;
-  entry.appendChild(line);
-  terminalOutput.appendChild(entry);
-  return entry;
+  terminalShell?.classList.remove("has-output");
 };
 
-const appendResponse = (content, className = "terminal-response") => {
-  const target = activeTerminalEntry || terminalOutput;
+const showTerminalOutput = () => {
+  if (terminalOutput) {
+    terminalOutput.classList.remove("is-empty");
+  }
 
-  if (!target) {
+  terminalShell?.classList.add("has-output");
+};
+
+const escapeHtml = (value) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+
+const appendPromptLine = (command) => {
+  if (!terminalOutput) {
     return;
   }
 
+  showTerminalOutput();
+  const block = document.createElement("div");
+  block.className = "terminal-entry";
+  block.innerHTML = `
+    <p class="terminal-line">
+      <span class="prompt-user">jbeau@jbeau-dev</span>
+      <span class="prompt-divider">:</span>
+      <span class="prompt-path">${escapeHtml(currentDirectory.replace("~/profile", "~"))}</span>
+      <span class="prompt-symbol">$</span>
+      <span class="terminal-command">${escapeHtml(command)}</span>
+    </p>
+  `;
+  terminalOutput.appendChild(block);
+  scrollTerminalToBottom();
+};
+
+const appendResponse = (content, className = "terminal-response") => {
+  if (!terminalOutput) {
+    return;
+  }
+
+  showTerminalOutput();
   const block = document.createElement("div");
   block.className = className;
   block.textContent = content;
-  target.appendChild(block);
+  terminalOutput.appendChild(block);
   scrollTerminalToBottom();
 };
 
 const appendHtmlResponse = (content, className = "terminal-response") => {
-  const target = activeTerminalEntry || terminalOutput;
-
-  if (!target) {
+  if (!terminalOutput) {
     return;
   }
 
+  showTerminalOutput();
   const block = document.createElement("div");
   block.className = className;
   block.innerHTML = content;
-  target.appendChild(block);
+  terminalOutput.appendChild(block);
   scrollTerminalToBottom();
+};
+
+const formatLsResponse = (entries) => {
+  const items = entries
+    .map((entry) => {
+      const itemClass = entry.endsWith("/") ? "terminal-list-item" : "terminal-list-item is-file";
+      return `<span class="${itemClass}">${escapeHtml(entry)}</span>`;
+    })
+    .join("");
+
+  return `<div class="terminal-list-grid">${items}</div>`;
 };
 
 const setTerminalPromptPath = () => {
@@ -358,7 +395,7 @@ const commandHandlers = {
     appendResponse(fileContents["~/profile/about.txt"]),
   focus: () =>
     appendResponse(
-      "Current focus areas:\n- Systems and networking\n- Cloud infrastructure and platform-minded software\n- Containers and containerized application workflows\n- Security-aware tooling\n- Developer experience and automation\n\nRight now I’m especially interested in software that sits one layer beneath the user-facing surface: observability, diagnostics, workflow automation, validation infrastructure, containerized testing, and tooling that makes complex behavior easier to reason about."
+      "Current focus areas:\n- Systems and networking\n- Cloud infrastructure and platform-minded software\n- Containers and containerized application workflows\n- Security-aware tooling\n- Developer experience and automation\n\nRight now I’m especially interested in software that sits one layer beneath the user-facing surface: observability, diagnostics, workflow automation, validation infrastructure, containerized workflows, CI/CD pipelines, and tooling that makes complex behavior easier to reason about."
     ),
   experience: () =>
     appendResponse(fileContents["~/profile/experience.log"]),
@@ -386,7 +423,7 @@ const commandHandlers = {
     appendHtmlResponse(
       `Reach out via <a href="${links.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a>, <a href="${links.github}" target="_blank" rel="noreferrer">GitHub</a>, or email once contact details are finalized.`
     ),
-  ls: () => appendResponse(virtualDirectories[currentDirectory].join("\n")),
+  ls: () => appendHtmlResponse(formatLsResponse(virtualDirectories[currentDirectory]), "terminal-response terminal-listing"),
   pwd: () => appendResponse(currentDirectory),
   github: () => {
     appendResponse(`opening ${links.github}`);
@@ -401,9 +438,7 @@ const commandHandlers = {
     openLink(links.resume);
   },
   clear: () => {
-    if (terminalOutput) {
-      terminalOutput.innerHTML = "";
-    }
+    clearTerminalOutput();
   }
 };
 
@@ -414,7 +449,7 @@ const runCommand = (rawInput) => {
     return;
   }
 
-  activeTerminalEntry = appendPromptLine(input);
+  appendPromptLine(input);
 
   const [command, ...args] = input.split(/\s+/);
   const normalizedCommand = command.toLowerCase();
@@ -424,19 +459,16 @@ const runCommand = (rawInput) => {
 
     if (!target) {
       appendResponse("usage: open <about|experience|oracle|projects|captions|skills|education|contact|github|linkedin|resume>");
-      activeTerminalEntry = null;
       return;
     }
 
     if (target in links) {
       appendResponse(`opening ${links[target]}`);
       openLink(links[target]);
-      activeTerminalEntry = null;
       return;
     }
 
     openSection(target);
-    activeTerminalEntry = null;
     return;
   }
 
@@ -445,14 +477,12 @@ const runCommand = (rawInput) => {
 
     if (!target) {
       appendResponse(`cd: ${args[0] || ""}: No such directory`);
-      activeTerminalEntry = null;
       return;
     }
 
     currentDirectory = target;
     setTerminalPromptPath();
     appendResponse(`directory changed -> ${currentDirectory}`);
-    activeTerminalEntry = null;
     return;
   }
 
@@ -461,41 +491,33 @@ const runCommand = (rawInput) => {
 
     if (!filePath) {
       appendResponse("usage: cat <file>");
-      activeTerminalEntry = null;
       return;
     }
 
     if (!(filePath in fileContents)) {
       appendResponse(`cat: ${args[0]}: No such file`);
-      activeTerminalEntry = null;
       return;
     }
 
     appendResponse(fileContents[filePath]);
-    activeTerminalEntry = null;
     return;
   }
 
   if (normalizedCommand in commandHandlers) {
     commandHandlers[normalizedCommand](args);
-    activeTerminalEntry = null;
     return;
   }
 
   appendResponse(
     `command not found: ${normalizedCommand}\nType 'help' to see available portfolio commands.`
   );
-  activeTerminalEntry = null;
 };
 
 const bootstrapTerminal = () => {
   if (!terminalOutput) {
     return;
   }
-
-  appendResponse("Portfolio terminal initialized.", "terminal-hint");
-  appendResponse("Type 'help' to explore Joel's background, experience, projects, and research work.", "terminal-hint");
-  appendResponse("Good starter commands: help, experience, oracle, captions, ls, cd projects, cat multi-modal-sensor-captioning.md", "terminal-hint");
+  clearTerminalOutput();
 };
 
 if (terminalShell && terminalInput) {
@@ -575,6 +597,77 @@ if (terminalForm && terminalInput) {
 
   setTerminalPromptPath();
   bootstrapTerminal();
+}
+
+const updateSkillsCarousel = () => {
+  if (!skillsTrack || !skillsCards.length) {
+    return;
+  }
+
+  const trackRect = skillsTrack.getBoundingClientRect();
+  const trackCenter = trackRect.left + trackRect.width / 2;
+  let closestCard = skillsCards[0];
+  let closestDistance = Number.POSITIVE_INFINITY;
+
+  skillsCards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.left + rect.width / 2;
+    const distance = Math.abs(trackCenter - cardCenter);
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestCard = card;
+    }
+  });
+
+  skillsCards.forEach((card) => {
+    card.classList.toggle("is-active", card === closestCard);
+  });
+
+  if (skillsPrevButton) {
+    skillsPrevButton.disabled = skillsTrack.scrollLeft <= 8;
+  }
+
+  if (skillsNextButton) {
+    const maxScrollLeft = skillsTrack.scrollWidth - skillsTrack.clientWidth;
+    skillsNextButton.disabled = skillsTrack.scrollLeft >= maxScrollLeft - 8;
+  }
+};
+
+const getActiveSkillsIndex = () => {
+  const activeIndex = skillsCards.findIndex((card) => card.classList.contains("is-active"));
+  return activeIndex >= 0 ? activeIndex : 0;
+};
+
+const focusSkillsCard = (index) => {
+  if (!skillsTrack || !skillsCards.length) {
+    return;
+  }
+
+  const clampedIndex = Math.max(0, Math.min(skillsCards.length - 1, index));
+  const targetCard = skillsCards[clampedIndex];
+
+  targetCard.scrollIntoView({
+    behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+    block: "nearest",
+    inline: "center"
+  });
+};
+
+const scrollSkillsByCard = (direction) => {
+  if (!skillsTrack || !skillsCards.length) {
+    return;
+  }
+
+  focusSkillsCard(getActiveSkillsIndex() + direction);
+};
+
+if (skillsTrack && skillsCards.length) {
+  skillsPrevButton?.addEventListener("click", () => scrollSkillsByCard(-1));
+  skillsNextButton?.addEventListener("click", () => scrollSkillsByCard(1));
+  skillsTrack.addEventListener("scroll", updateSkillsCarousel, { passive: true });
+  window.addEventListener("load", updateSkillsCarousel);
+  window.addEventListener("resize", updateSkillsCarousel);
 }
 
 if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
