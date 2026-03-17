@@ -278,7 +278,7 @@ select {
 }
 
 .hero-grid-home {
-  grid-template-columns: minmax(0, 1.22fr) minmax(360px, 0.9fr);
+  grid-template-columns: minmax(0, 1.38fr) minmax(320px, 0.82fr);
 }
 
 .dive-layout {
@@ -299,9 +299,9 @@ select {
 }
 
 .hero-headline {
-  max-width: 26ch;
+  max-width: 22ch;
   margin: 1rem 0 1.15rem;
-  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  font-size: clamp(1.1rem, 2vw, 1.65rem);
   font-weight: 500;
   color: var(--text-soft);
   text-wrap: balance;
@@ -314,8 +314,8 @@ select {
 
 .hero-cta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
+  flex-wrap: nowrap;
+  gap: 0.55rem;
   margin-top: 1.8rem;
 }
 
@@ -324,12 +324,13 @@ select {
   align-items: center;
   justify-content: center;
   min-height: 3rem;
-  padding: 0.78rem 1.05rem;
+  padding: 0.76rem 0.95rem;
   border-radius: 999px;
   border: 1px solid rgba(117, 151, 181, 0.2);
   background: rgba(117, 151, 181, 0.08);
   color: var(--text-soft);
   font-weight: 500;
+  white-space: nowrap;
   transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
@@ -966,6 +967,7 @@ select {
   .hero-cta {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
   }
 
   .button {

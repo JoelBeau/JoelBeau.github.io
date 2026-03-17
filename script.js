@@ -1,6 +1,6 @@
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
-const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+const navLinks = document.querySelectorAll('.nav-menu a[href*="#"]');
 const sections = document.querySelectorAll("main section[id]");
 const yearTarget = document.getElementById("year");
 const revealElements = document.querySelectorAll(".reveal");
@@ -101,7 +101,7 @@ const updateActiveNav = () => {
 
   sections.forEach((section) => {
     const id = section.getAttribute("id");
-    const link = document.querySelector(`.nav-menu a[href="#${id}"]`);
+    const link = document.querySelector(`.nav-menu a[href="#${id}"], .nav-menu a[href$="#${id}"]`);
 
     if (!link) {
       return;
