@@ -6,27 +6,29 @@ const yearTarget = document.getElementById("year");
 const revealElements = document.querySelectorAll(".reveal");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+const typedText = document.getElementById("typed-text");
+
 const terminalShell = document.getElementById("terminal-shell");
 const terminalOutput = document.getElementById("terminal-output");
 const terminalForm = document.getElementById("terminal-form");
 const terminalInput = document.getElementById("terminal-input");
 
 const links = {
-  github: "https://github.com/JoelBeauregard",
+  github: "https://github.com/JoelBeau",
   linkedin: "https://www.linkedin.com/in/joel-beauregard-b74b54315",
   resume: "assets/Joel_Beauregard_Resume.pdf"
 };
 
 const sectionSelectors = {
-  about: "#about",
-  experience: "#experience",
-  oracle: "#experience",
-  projects: "#projects",
-  socketscout: "#projects",
-  thermo: "#projects",
-  skills: "#skills",
-  education: "#education",
-  contact: "#contact"
+  about: "index.html#about",
+  experience: "index.html#experience",
+  oracle: "index.html#experience",
+  projects: "index.html#projects",
+  socketscout: "index.html#projects",
+  thermo: "index.html#projects",
+  skills: "index.html#skills",
+  education: "index.html#education",
+  contact: "index.html#contact"
 };
 
 const commandDocs = [
@@ -45,15 +47,12 @@ const commandDocs = [
   "ls            show terminal topics",
   "pwd           show current terminal path",
   "cat <file>    read portfolio topic files",
-  "open <item>   jump to a section on the page",
+  "open <item>   jump to a section on the site",
   "github        open GitHub profile",
   "linkedin      open LinkedIn profile",
   "resume        open resume PDF",
   "clear         clear terminal output"
 ];
-
-const commandHistory = [];
-let historyIndex = -1;
 
 const fileContents = {
   "about.txt":
@@ -63,14 +62,17 @@ const fileContents = {
   "skills.json":
     '{\n  "languages": ["Python", "Java", "C", "SQL", "Bash"],\n  "platforms": ["Linux", "Docker", "Kubernetes", "MySQL"],\n  "focus": ["Systems", "Networking", "Cloud Infrastructure", "Security", "Automation"]\n}',
   "contact.vcf":
-    "GitHub: https://github.com/JoelBeauregard\nLinkedIn: https://www.linkedin.com/in/joel-beauregard-b74b54315\nEmail: available on request",
+    "GitHub: https://github.com/JoelBeau\nLinkedIn: https://www.linkedin.com/in/joel-beauregard-b74b54315\nEmail: available on request",
   "resume.pdf":
     "Binary file preview unavailable here. Run 'resume' to open the PDF.",
   "github.link":
-    "GitHub profile -> https://github.com/JoelBeauregard",
+    "GitHub profile -> https://github.com/JoelBeau",
   "linkedin.link":
     "LinkedIn profile -> https://www.linkedin.com/in/joel-beauregard-b74b54315"
 };
+
+const commandHistory = [];
+let historyIndex = -1;
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
@@ -91,6 +93,10 @@ if (navToggle && navMenu) {
 }
 
 const updateActiveNav = () => {
+  if (!sections.length) {
+    return;
+  }
+
   const offset = window.scrollY + 140;
 
   sections.forEach((section) => {
@@ -111,6 +117,53 @@ const updateActiveNav = () => {
 
 window.addEventListener("scroll", updateActiveNav, { passive: true });
 window.addEventListener("load", updateActiveNav);
+
+if (typedText && !prefersReducedMotion.matches) {
+  const messages = [
+    "init --focus software-engineering systems networking",
+    "tracking -> cloud infrastructure network-visibility developer-platforms",
+    "current_state: building practical systems and networking tools"
+  ];
+
+  let messageIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  const type = () => {
+    const currentMessage = messages[messageIndex];
+    typedText.textContent = currentMessage.slice(0, charIndex);
+
+    if (!deleting && charIndex < currentMessage.length) {
+      charIndex += 1;
+      setTimeout(type, 55);
+      return;
+    }
+
+    if (!deleting && charIndex === currentMessage.length) {
+      deleting = true;
+      setTimeout(type, 1700);
+      return;
+    }
+
+    if (deleting && charIndex > 0) {
+      charIndex -= 1;
+      setTimeout(type, 22);
+      return;
+    }
+
+    deleting = false;
+    messageIndex = (messageIndex + 1) % messages.length;
+    setTimeout(type, 350);
+  };
+
+  type();
+} else if (typedText) {
+  typedText.textContent = "focus: software engineering, systems, networking, infrastructure";
+}
+
+const openLink = (url) => {
+  window.open(url, "_blank", "noopener,noreferrer");
+};
 
 const scrollTerminalToBottom = () => {
   if (terminalOutput) {
@@ -161,30 +214,16 @@ const appendHtmlResponse = (content, className = "terminal-response") => {
   scrollTerminalToBottom();
 };
 
-const openLink = (url) => {
-  window.open(url, "_blank", "noopener,noreferrer");
-};
-
 const openSection = (key) => {
-  const selector = sectionSelectors[key];
+  const target = sectionSelectors[key];
 
-  if (!selector) {
+  if (!target) {
     appendResponse(`open: unknown target '${key}'`);
     return;
   }
 
-  const target = document.querySelector(selector);
-
-  if (!target) {
-    appendResponse(`open: section '${key}' is unavailable right now`);
-    return;
-  }
-
-  target.scrollIntoView({
-    behavior: prefersReducedMotion.matches ? "auto" : "smooth",
-    block: "start"
-  });
-  appendResponse(`navigated to ${selector}`);
+  appendResponse(`opening ${target}`);
+  window.location.href = target;
 };
 
 const commandHandlers = {
@@ -203,19 +242,19 @@ const commandHandlers = {
     ),
   experience: () =>
     appendResponse(
-      "Experience trajectory:\n- Oracle Software Engineering Intern, Summer 2025\n- Returning Oracle intern, Summer 2026\n- Building practical systems and networking projects outside class"
+      "Experience trajectory:\n- Oracle Software Engineering Intern, Summer 2025\n- Returning Oracle OCI intern, Summer 2026\n- Building practical systems and networking projects outside class"
     ),
   oracle: () =>
     appendResponse(
-      "Built Oracle PCA networking infrastructure experience around SR-IOV VCN Network Traffic Analytics, Cisco/PCA validation, Kubernetes + Podman test infrastructure, and a MySQL-backed 180+ test framework."
+      "Researched and documented Oracle PCA Network Traffic Analytics for SR-IOV VCN observability, built Kubernetes + Podman test infrastructure, validated against Cisco switches and PCA hardware, and improved a MySQL-backed test framework."
     ),
   projects: () =>
     appendResponse(
-      "Featured builds:\n- SocketScout: networking and systems visibility tooling\n- Thermodynamics Database: MySQL, Python, Bash, CSV ingestion, Linux automation"
+      "Featured builds:\n- SocketScout: asyncio-based concurrent port scanning, banner grabbing, and network visibility tooling\n- Thermodynamics Database: MySQL, Python, Bash, CSV ingestion, Linux automation"
     ),
   socketscout: () =>
     appendResponse(
-      "SocketScout explores network visibility, connectivity analysis, and system-aware debugging through practical tooling aimed at networking and security-oriented workflows."
+      "SocketScout is a concurrent Python port scanner with asyncio-driven orchestration, optional SYN scanning, banner grabbing, and per-host state isolation for clean multi-target network analysis."
     ),
   thermo: () =>
     appendResponse(
@@ -368,9 +407,9 @@ if (terminalForm && terminalInput) {
       terminalInput.value = commandHistory[historyIndex] || "";
     }
   });
-}
 
-bootstrapTerminal();
+  bootstrapTerminal();
+}
 
 if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
   const revealObserver = new IntersectionObserver(

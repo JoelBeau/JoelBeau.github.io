@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Dive deeper into Joel Beauregard's portfolio through an interactive terminal experience focused on systems, networking, cloud infrastructure, and practical software engineering."
+  >
+  <title>Joel Beauregard | Dive Deeper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="index.html#top" aria-label="Joel Beauregard home">
+          <span class="brand-mark">JB</span>
+          <span class="brand-text">
+            <strong>Joel Beauregard</strong>
+            <span>systems / networking / security</span>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="index.html#about">About</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#education">Education</a>
+          <a href="index.html#contact">Contact</a>
+          <a class="active" href="dive-deeper.html">Dive Deeper</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" aria-labelledby="dive-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="section-kicker">
+              <span class="status-dot"></span>
+              status: interactive / explore commands / systems + networking
+            </p>
+            <h1 id="dive-title">Dive Deeper</h1>
+            <p class="hero-headline">
+              Explore the portfolio through a working terminal interface
+            </p>
+            <p class="hero-summary">
+              This page is a deeper cut for engineers, recruiters, and technical mentors who want a more hands-on view of my experience, projects, and focus areas. The terminal below supports commands for Oracle, SocketScout, skills, project navigation, and portfolio links.
+            </p>
+
+            <div class="hero-cta">
+              <a class="button button-primary" href="index.html#projects">Back To Projects</a>
+              <a class="button button-secondary" href="index.html#experience">Experience</a>
+              <a class="button button-secondary" href="assets/Joel_Beauregard_Resume.pdf">Resume</a>
+              <a class="button button-ghost" href="https://github.com/JoelBeau" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="button button-ghost" href="https://www.linkedin.com/in/joel-beauregard-b74b54315" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+
+            <ul class="hero-metrics" aria-label="Dive deeper highlights">
+              <li>
+                <span class="metric-label">commands</span>
+                <strong>help, whoami, oracle, socketscout</strong>
+              </li>
+              <li>
+                <span class="metric-label">navigation</span>
+                <strong>open projects, open experience, resume</strong>
+              </li>
+              <li>
+                <span class="metric-label">style</span>
+                <strong>interactive terminal, same portfolio voice</strong>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="terminal-panel hero-panel" aria-label="Interactive portfolio terminal">
+            <div class="panel-header">
+              <span class="panel-dot panel-dot-red"></span>
+              <span class="panel-dot panel-dot-amber"></span>
+              <span class="panel-dot panel-dot-green"></span>
+              <span class="panel-title">/terminal/dive-deeper</span>
+            </div>
+            <div class="panel-body">
+              <div
+                class="terminal-shell"
+                id="terminal-shell"
+                role="application"
+                aria-label="Interactive portfolio terminal"
+              >
+                <div class="terminal-output" id="terminal-output" aria-live="polite"></div>
+
+                <form class="terminal-form" id="terminal-form" autocomplete="off">
+                  <label class="terminal-input-row" for="terminal-input">
+                    <span class="prompt-user">joel@portfolio</span>
+                    <span class="prompt-divider">:</span>
+                    <span class="prompt-path">~/profile</span>
+                    <span class="prompt-symbol">$</span>
+                    <input
+                      class="terminal-input"
+                      id="terminal-input"
+                      name="command"
+                      type="text"
+                      spellcheck="false"
+                      autocapitalize="off"
+                      autocomplete="off"
+                      aria-label="Type a terminal command"
+                      placeholder="Try: help"
+                    >
+                  </label>
+                </form>
+              </div>
+
+              <div class="status-grid">
+                <article>
+                  <span class="mini-label">suggested</span>
+                  <strong>help</strong>
+                </article>
+                <article>
+                  <span class="mini-label">project</span>
+                  <strong>socketscout</strong>
+                </article>
+                <article>
+                  <span class="mini-label">experience</span>
+                  <strong>oracle</strong>
+                </article>
+                <article>
+                  <span class="mini-label">navigation</span>
+                  <strong>open projects</strong>
+                </article>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>&copy; <span id="year"></span> Joel Beauregard. Built for GitHub Pages.</p>
+        <p class="footer-accent">
+          <span class="prompt-user">joel@portfolio</span>
+          <span class="prompt-symbol">$</span>
+          <span>cd ~/profile/deeper</span>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -143,6 +143,7 @@ select {
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--accent);
+  white-space: nowrap;
 }
 
 .section-heading h2,
@@ -315,19 +316,24 @@ select {
   min-height: 3rem;
   padding: 0.78rem 1.05rem;
   border-radius: 999px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(117, 151, 181, 0.2);
+  background: rgba(117, 151, 181, 0.08);
+  color: var(--text-soft);
   font-weight: 500;
   transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .button:hover {
   transform: translateY(-2px);
-}
-
-.button-primary {
   background: linear-gradient(135deg, rgba(120, 231, 195, 0.24), rgba(125, 180, 255, 0.22));
   border-color: rgba(120, 231, 195, 0.3);
   box-shadow: var(--glow);
+  color: var(--text);
+}
+
+.button-primary {
+  background: rgba(117, 151, 181, 0.08);
+  border-color: rgba(117, 151, 181, 0.2);
 }
 
 .button-secondary {
@@ -443,6 +449,22 @@ select {
 
 .prompt-path {
   color: var(--accent-strong);
+}
+
+.typed-line {
+  color: var(--text-soft);
+  min-height: 2rem;
+  margin-top: 0.25rem;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.72ch;
+  height: 1.15em;
+  margin-left: 0.1rem;
+  background: var(--accent);
+  vertical-align: -0.15em;
+  animation: blink 1s steps(1, end) infinite;
 }
 
 .terminal-shell {
@@ -636,6 +658,8 @@ select {
 
 .project-card {
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
@@ -648,13 +672,13 @@ select {
 }
 
 .project-card-featured {
-  grid-column: span 7;
+  grid-column: span 6;
   border-color: rgba(120, 231, 195, 0.28);
   box-shadow: var(--shadow), var(--glow);
 }
 
 .project-card:not(.project-card-featured) {
-  grid-column: span 5;
+  grid-column: span 6;
 }
 
 .project-card-placeholder {
@@ -698,6 +722,8 @@ select {
 
 .project-links {
   margin-top: 1.2rem;
+  padding-top: 0.4rem;
+  margin-top: auto;
 }
 
 .project-links a,
@@ -766,6 +792,12 @@ select {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -839,6 +871,10 @@ select {
 
   .status-grid {
     grid-template-columns: 1fr;
+  }
+
+  .section-kicker {
+    white-space: normal;
   }
 }
 

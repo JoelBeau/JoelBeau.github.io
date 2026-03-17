@@ -47,6 +47,7 @@
           <a href="#skills">Skills</a>
           <a href="#education">Education</a>
           <a href="#contact">Contact</a>
+          <a href="dive-deeper.html">Dive Deeper</a>
         </div>
       </nav>
     </header>
@@ -72,7 +73,7 @@
               <a class="button button-primary" href="#projects">View Projects</a>
               <a class="button button-secondary" href="#experience">Experience</a>
               <a class="button button-secondary" href="assets/Joel_Beauregard_Resume.pdf">Resume</a>
-              <a class="button button-ghost" href="https://github.com/JoelBeauregard" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="button button-ghost" href="https://github.com/JoelBeau" target="_blank" rel="noreferrer">GitHub</a>
               <a class="button button-ghost" href="https://www.linkedin.com/in/joel-beauregard-b74b54315" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
 
@@ -100,34 +101,15 @@
               <span class="panel-title">/terminal/identity</span>
             </div>
             <div class="panel-body">
-              <div
-                class="terminal-shell"
-                id="terminal-shell"
-                role="application"
-                aria-label="Interactive portfolio terminal"
-              >
-                <div class="terminal-output" id="terminal-output" aria-live="polite"></div>
-
-                <form class="terminal-form" id="terminal-form" autocomplete="off">
-                  <label class="terminal-input-row" for="terminal-input">
-                    <span class="prompt-user">joel@portfolio</span>
-                    <span class="prompt-divider">:</span>
-                    <span class="prompt-path">~/profile</span>
-                    <span class="prompt-symbol">$</span>
-                    <input
-                      class="terminal-input"
-                      id="terminal-input"
-                      name="command"
-                      type="text"
-                      spellcheck="false"
-                      autocapitalize="off"
-                      autocomplete="off"
-                      aria-label="Type a terminal command"
-                      placeholder="Try: help"
-                    >
-                  </label>
-                </form>
-              </div>
+              <p class="prompt-line">
+                <span class="prompt-user">joel@portfolio</span>
+                <span class="prompt-divider">:</span>
+                <span class="prompt-path">~/profile</span>
+                <span class="prompt-symbol">$</span>
+              </p>
+              <p class="typed-line">
+                <span id="typed-text"></span><span class="cursor" aria-hidden="true"></span>
+              </p>
 
               <div class="status-grid">
                 <article>
@@ -263,21 +245,22 @@
               </div>
               <h3>SocketScout</h3>
               <p>
-                A networking and security-oriented tool designed around visibility, connectivity awareness, and practical systems insight. SocketScout reflects my interest in understanding low-level behavior and building utilities that make network activity easier to inspect and reason about.
+                A high-performance concurrent port scanner built in Python with an asyncio-driven pipeline, per-host isolation, and modular service interrogation. SocketScout reflects my interest in networking internals, systems correctness, and practical security tooling.
               </p>
               <ul class="project-points">
-                <li>Framed around network analysis, socket visibility, or infrastructure awareness.</li>
-                <li>Demonstrates curiosity about systems behavior, debugging surfaces, and practical developer or security tooling.</li>
-                <li>Built to feel useful, technical, and grounded rather than purely academic.</li>
+                <li>Scans multiple hosts and large port ranges concurrently using non-blocking I/O with explicit per-host state isolation.</li>
+                <li>Supports TCP connect scanning by default, optional SYN-based scanning, and modular banner grabbing for service metadata extraction.</li>
+                <li>Designed around clean separation between scan orchestration, networking primitives, validation, and output formatting.</li>
               </ul>
               <div class="tech-tags" aria-label="SocketScout technologies">
                 <span>Python</span>
+                <span>Asyncio</span>
                 <span>Networking</span>
-                <span>Systems</span>
-                <span>Security Tooling</span>
+                <span>Port Scanning</span>
+                <span>Banner Grabbing</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/your-username/socketscout" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://github.com/JoelBeau/socketscout" target="_blank" rel="noreferrer">GitHub</a>
                 <a href="#contact">Ask About This Project</a>
               </div>
             </article>
