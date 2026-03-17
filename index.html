@@ -43,12 +43,17 @@
         <div class="nav-menu" id="nav-menu">
           <a href="index.html">Home</a>
           <a href="index.html#about">About</a>
+          <a href="index.html#education">Education</a>
           <a href="index.html#experience">Experience</a>
           <a href="index.html#projects">Projects</a>
-          <a href="dive-deeper.html">Dive Deeper</a>
           <a href="index.html#skills">Skills</a>
-          <a href="index.html#education">Education</a>
           <a href="index.html#contact">Contact</a>
+          <details class="nav-dropdown">
+            <summary>More</summary>
+            <div class="nav-dropdown-menu">
+              <a href="dive-deeper.html">Dive Deeper</a>
+            </div>
+          </details>
         </div>
       </nav>
     </header>
@@ -60,14 +65,14 @@
           <div class="hero-copy">
             <p class="section-kicker">
               <span class="status-dot"></span>
-              status: active / returning Oracle OCI SWE intern / systems + networking
+              status: active / building student dev platform / returning Oracle OCI SWE intern
             </p>
             <h1 id="hero-title">Joel Beauregard</h1>
             <p class="hero-headline">
               Software Engineering Student Building Systems, Networking Tools, and Infrastructure
             </p>
             <p class="hero-summary">
-              I’m a Computer Science / Software Engineering student at the University of Texas at Arlington with interests in cloud systems, cybersecurity, networking, developer infrastructure, and practical software engineering. I previously interned at Oracle and will be returning for another summer internship while continuing to build technical projects that reflect real-world engineering problems.
+              I’m a Computer Science / Software Engineering student at the University of Texas at Arlington with interests in cloud systems, cybersecurity, networking, developer infrastructure, and practical software engineering. I previously interned at Oracle and will be returning for another summer internship while actively building a student developer environment platform that reflects my interest in infrastructure, containers, Linux systems, and practical developer tooling. I’m especially motivated by work that carries ideas across the full lifecycle: design, implementation, testing, iteration, and long-term maintainability.
             </p>
 
             <div class="hero-cta">
@@ -81,7 +86,7 @@
             <ul class="hero-metrics" aria-label="Highlights">
               <li>
                 <span class="metric-label">focus</span>
-                <strong>cloud, systems, networking</strong>
+                <strong>cloud, systems, networking, platforms</strong>
               </li>
               <li>
                 <span class="metric-label">experience</span>
@@ -89,7 +94,7 @@
               </li>
               <li>
                 <span class="metric-label">approach</span>
-                <strong>builder mindset, practical tools</strong>
+                <strong>end-to-end execution, practical tools</strong>
               </li>
             </ul>
           </div>
@@ -115,19 +120,19 @@
               <div class="status-grid">
                 <article>
                   <span class="mini-label">mode</span>
-                  <strong>building real systems and network-aware tooling</strong>
+                  <strong>building real systems, platform tooling, and remote dev workflows</strong>
                 </article>
                 <article>
                   <span class="mini-label">trajectory</span>
-                  <strong>software engineering -> systems and networking</strong>
+                  <strong>software engineering -> systems, networking, and developer platforms</strong>
                 </article>
                 <article>
                   <span class="mini-label">current status</span>
-                  <strong>Oracle intern, returning Summer 2026</strong>
+                  <strong>student dev environment platform in progress + Oracle return</strong>
                 </article>
                 <article>
                   <span class="mini-label">interests</span>
-                  <strong>networking, containers, security, platforms</strong>
+                  <strong>networking, containers, Linux, security, platforms</strong>
                 </article>
               </div>
             </div>
@@ -149,10 +154,10 @@
             <article class="surface-card reveal">
               <p class="card-label">Professional Snapshot</p>
               <p>
-                My experience at Oracle strengthened how I think about engineering in production-minded environments: collaborating with teams, learning from experienced engineers, and understanding how disciplined implementation, communication, and iteration come together in real software organizations.
+                My experience at Oracle strengthened how I think about engineering in production-minded environments: collaborating with teams, learning from experienced engineers, and understanding how design, implementation, testing, maintenance, communication, and iteration come together in real software organizations.
               </p>
               <p>
-                Outside internship work, I like projects that sit close to systems behavior, networking visibility, infrastructure awareness, automation, and containerized application development. I’m especially motivated by software that organizes complexity, improves reliability, and helps people work more effectively.
+                Outside internship work, I like projects that sit close to systems behavior, networking visibility, infrastructure awareness, automation, containerized application development, and developer platform design. I’m especially motivated by software that organizes complexity, improves reliability, and helps people work more effectively, not just code that works in isolation.
               </p>
             </article>
 
@@ -165,10 +170,34 @@
                 <li>Networking &amp; Systems</li>
                 <li>Containers &amp; Platform Tooling</li>
                 <li>Developer Platforms</li>
+                <li>Remote Linux Environments</li>
                 <li>Practical Tooling</li>
               </ul>
             </article>
           </div>
+        </div>
+      </section>
+
+            <section class="section" id="education" aria-labelledby="education-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-label">/education</p>
+            <h2 id="education-title">Academic foundation with room to grow into deeper engineering work.</h2>
+          </div>
+
+          <article class="surface-card education-card reveal">
+            <div>
+              <p class="card-label">University</p>
+              <h3>University of Texas at Arlington</h3>
+              <p>Computer Science / Software Engineering Student</p>
+            </div>
+            <div class="education-meta">
+              <!-- Replace these placeholders with your exact graduation date, GPA, and coursework if you want them shown publicly. -->
+              <p><span>Expected Graduation:</span> <strong>May 2027</strong></p>
+              <p><span>GPA:</span> <strong>4.0</strong></p>
+              <p class="education-coursework"><span>Coursework:</span> <strong>Secure Programming, Operating Systems, Databases, Computer Organization, Data Structures and Algorithms, Object-Oriented Programming</strong></p>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -258,13 +287,45 @@
             <p class="section-label">/projects</p>
             <h2 id="projects-title">Projects that reflect systems thinking, networking interest, and practical execution.</h2>
             <p>
-              These projects are positioned to show more than class output. They highlight how I think about infrastructure, networking visibility, automation, data organization, and tools with real engineering utility.
+              These projects are positioned to show more than class output. They highlight how I think about infrastructure, networking visibility, automation, data organization, testing, and tools with real engineering utility across the software lifecycle.
             </p>
           </div>
 
-          <div class="project-grid">
+          <div class="project-carousel reveal">
+            <button class="project-nav project-nav-prev" type="button" aria-label="Previous project">
+              <span aria-hidden="true">&larr;</span>
+            </button>
+            <div class="project-track" id="project-track" tabindex="0" aria-label="Projects carousel">
             <!-- Duplicate a project card below when you want to add future work while keeping the same visual system. -->
-            <article class="project-card project-card-featured reveal">
+            <article class="project-card project-card-featured">
+              <div class="project-topline">
+                <span class="project-tag">featured project / ongoing</span>
+                <span class="project-path">/projects/student-dev-env-platform</span>
+              </div>
+              <h3>Student Dev Environment Platform</h3>
+              <p>
+                An active platform-oriented systems project focused on giving students isolated remote Linux development environments for coursework, projects, and terminal-based workflows. The build reflects how I think about infrastructure, containers, security boundaries, and practical developer tooling in academic settings, with an emphasis on design choices that are testable, maintainable, and useful for real academic workflows.
+              </p>
+              <ul class="project-points">
+                <li>Designing managed per-student Linux workspaces with isolated shell access, personal home directories, and practical remote development workflows.</li>
+                <li>Exploring container-aware environment orchestration for class-specific tooling, reproducible setups, and platform-managed resource tiers.</li>
+                <li>Shaping the architecture around systems design, security boundaries, networking considerations, and operational simplicity so the platform is easier to support and more useful to students and course teams.</li>
+              </ul>
+              <div class="tech-tags" aria-label="Student Dev Environment Platform technologies">
+                <span>Linux</span>
+                <span>Containers</span>
+                <span>Developer Platforms</span>
+                <span>Infrastructure</span>
+                <span>Remote Environments</span>
+                <span>Systems Design</span>
+              </div>
+              <div class="project-links">
+                <a href="dive-deeper.html">Dive Deeper</a>
+                <a href="#contact">Ask About This Project</a>
+              </div>
+            </article>
+
+            <article class="project-card project-card-featured">
               <div class="project-topline">
                 <span class="project-tag">featured project</span>
                 <span class="project-path">/projects/socketscout</span>
@@ -291,7 +352,7 @@
               </div>
             </article>
 
-            <article class="project-card reveal">
+            <article class="project-card">
               <div class="project-topline">
                 <span class="project-tag">featured project</span>
                 <span class="project-path">/projects/thermodynamics-database</span>
@@ -319,7 +380,7 @@
               </div>
             </article>
 
-            <article class="project-card project-card-placeholder reveal">
+            <article class="project-card project-card-placeholder">
               <div class="project-topline">
                 <span class="project-tag">research project</span>
                 <span class="project-path">/projects/multi-modal-sensor-captioning</span>
@@ -345,6 +406,10 @@
                 <a href="#contact">Ask About This Project</a>
               </div>
             </article>
+            </div>
+            <button class="project-nav project-nav-next" type="button" aria-label="Next project">
+              <span aria-hidden="true">&rarr;</span>
+            </button>
           </div>
         </div>
       </section>
@@ -355,10 +420,10 @@
             <p class="section-label">/projects/dive-deeper</p>
             <h2 id="explore-title">Want to learn more? Explore the interactive terminal.</h2>
             <p>
-              For a more hands-on view of my work, technical interests, and project details, open the Dive Deeper page and explore the portfolio through a functional terminal interface.
+              For a more hands-on view of my work, technical interests, and project details, click the button below and explore the portfolio through a functional terminal interface.
             </p>
             <div class="explore-actions">
-              <a class="button button-ghost" href="dive-deeper.html">Open Dive Deeper</a>
+              <a class="button button-ghost" href="dive-deeper.html">Dive Deeper</a>
             </div>
           </div>
         </div>
@@ -370,7 +435,7 @@
             <p class="section-label">/skills</p>
             <h2 id="skills-title">A toolkit shaped by software, systems, networking, and automation.</h2>
             <p>
-              This section is organized for quick scanning by recruiters and engineers, while still reflecting the areas I’m actively building depth in.
+              This toolkit reflects the kind of engineering work I’m drawn to most: systems, networking, containers, infrastructure, and practical software tools. It’s the mix of technologies I use when building software that needs to be reliable, inspectable, and useful in real environments.
             </p>
           </div>
 
@@ -443,29 +508,6 @@
               <span aria-hidden="true">&rarr;</span>
             </button>
           </div>
-        </div>
-      </section>
-
-      <section class="section" id="education" aria-labelledby="education-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="section-label">/education</p>
-            <h2 id="education-title">Academic foundation with room to grow into deeper engineering work.</h2>
-          </div>
-
-          <article class="surface-card education-card reveal">
-            <div>
-              <p class="card-label">University</p>
-              <h3>University of Texas at Arlington</h3>
-              <p>Computer Science / Software Engineering Student</p>
-            </div>
-            <div class="education-meta">
-              <!-- Replace these placeholders with your exact graduation date, GPA, and coursework if you want them shown publicly. -->
-              <p><span>Expected Graduation:</span> <strong>May 2027</strong></p>
-              <p><span>GPA:</span> <strong>4.0</strong></p>
-              <p class="education-coursework"><span>Coursework:</span> <strong>Secure Programming, Operating Systems, Databases, Computer Organization, Data Structures and Algorithms, Object-Oriented Programming</strong></p>
-            </div>
-          </article>
         </div>
       </section>
 
