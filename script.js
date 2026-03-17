@@ -1,6 +1,7 @@
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const navLinks = document.querySelectorAll('.nav-menu a[href*="#"]');
+const navDropdowns = document.querySelectorAll(".nav-dropdown");
 const sections = document.querySelectorAll("main section[id]");
 const yearTarget = document.getElementById("year");
 const revealElements = document.querySelectorAll(".reveal");
@@ -137,6 +138,42 @@ if (navToggle && navMenu) {
     link.addEventListener("click", () => {
       navMenu.classList.remove("is-open");
       navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+if (navDropdowns.length) {
+  navDropdowns.forEach((dropdown) => {
+    const dropdownLinks = dropdown.querySelectorAll("a");
+
+    dropdownLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        dropdown.removeAttribute("open");
+      });
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof Node)) {
+      return;
+    }
+
+    navDropdowns.forEach((dropdown) => {
+      if (!dropdown.contains(target)) {
+        dropdown.removeAttribute("open");
+      }
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    navDropdowns.forEach((dropdown) => {
+      dropdown.removeAttribute("open");
     });
   });
 }
