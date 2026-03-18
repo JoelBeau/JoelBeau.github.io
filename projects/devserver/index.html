@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="DevServer is Joel Beauregard's ongoing student developer environment platform focused on isolated, unified, and remote Linux workspaces, containers, platform design, and practical academic developer tooling."
+  >
+  <title>Joel Beauregard | DevServer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="../../styles.css?v=20260318a">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="../../index.html" aria-label="Joel Beauregard home">
+          <span class="brand-mark">JB</span>
+          <span class="brand-text">
+            <strong>Joel Beauregard</strong>
+            <span>systems / networking / security</span>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#about">About</a>
+          <a href="../../index.html#education">Education</a>
+          <a href="../../index.html#experience">Experience</a>
+          <a href="../../index.html#projects">Projects</a>
+          <a href="../../index.html#skills">Skills</a>
+          <a href="../../index.html#contact">Contact</a>
+          <details class="nav-dropdown">
+            <summary>More</summary>
+            <div class="nav-dropdown-menu">
+              <a class="active" href="./">DevServer</a>
+              <a href="../../dive-deeper.html">Dive Deeper</a>
+            </div>
+          </details>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" aria-labelledby="devserver-title">
+        <div class="container project-detail-hero">
+          <div class="hero-copy">
+            <p class="section-kicker">
+              <span class="status-dot"></span>
+              status: ongoing / platform systems build / devserver
+            </p>
+            <p class="section-label">/projects/devserver</p>
+            <h1 id="devserver-title">DevServer</h1>
+            <p class="hero-headline">Student Dev Environment Platform</p>
+            <p class="hero-summary">
+              DevServer is an ongoing platform-oriented systems project focused on giving students isolated remote Linux development environments for coursework, projects, and terminal-based workflows. It reflects how I think about infrastructure, containers, security boundaries, maintainability, and practical developer tooling in academic settings.
+            </p>
+
+            <div class="hero-cta">
+              <a class="button button-primary" href="../../index.html#projects">Back To Projects</a>
+              <a class="button button-secondary" href="../../dive-deeper.html">Dive Deeper</a>
+              <a class="button button-ghost" href="../../index.html#contact">Discuss This Project</a>
+            </div>
+
+            <ul class="hero-metrics" aria-label="DevServer highlights">
+              <li>
+                <span class="metric-label">category</span>
+                <strong>ongoing featured build</strong>
+              </li>
+              <li>
+                <span class="metric-label">focus</span>
+                <strong>linux, containers, remote environments</strong>
+              </li>
+              <li>
+                <span class="metric-label">direction</span>
+                <strong>platform engineering for academic workflows</strong>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="terminal-panel hero-panel" aria-label="DevServer summary panel">
+            <div class="panel-header">
+              <span class="panel-dot panel-dot-red"></span>
+              <span class="panel-dot panel-dot-amber"></span>
+              <span class="panel-dot panel-dot-green"></span>
+              <span class="panel-title">/projects/devserver/summary</span>
+            </div>
+            <div class="panel-body">
+              <div class="status-grid">
+                <article>
+                  <span class="mini-label">build type</span>
+                  <strong>managed remote Linux development platform</strong>
+                </article>
+                <article>
+                  <span class="mini-label">primary users</span>
+                  <strong>students, course teams, terminal-first workflows</strong>
+                </article>
+                <article>
+                  <span class="mini-label">core concerns</span>
+                  <strong>isolation, reproducibility, operational simplicity</strong>
+                </article>
+                <article>
+                  <span class="mini-label">engineering angle</span>
+                  <strong>systems design, maintainability, practical infrastructure</strong>
+                </article>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="overview-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-label">/overview</p>
+            <h2 id="overview-title">A practical platform idea shaped by real student workflows.</h2>
+            <p>
+              The goal is not to build an overengineered lab environment. It is to create a practical, well-bounded platform that gives students reliable access to Linux-based development environments without requiring every course or team to reinvent setup, isolation, and maintenance from scratch.
+            </p>
+          </div>
+
+          <div class="detail-grid">
+            <article class="surface-card reveal">
+              <p class="card-label">Problem / Motivation</p>
+              <p>
+                Student development environments are often inconsistent, fragile, or difficult to support across different machines and course requirements. DevServer is my way of thinking through what a cleaner academic developer platform could look like when Linux workflows, shell access, and reproducible tooling are treated as first-class concerns.
+              </p>
+            </article>
+
+            <article class="surface-card reveal">
+              <p class="card-label">Current Direction</p>
+              <p>
+                I’m treating DevServer as an active infrastructure and platform design project: mapping the architecture, deciding where isolation should live, thinking through resource tiers and operational constraints, and keeping the design grounded in realistic academic workflows rather than abstract platform ideas.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="building-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-label">/what-im-building</p>
+            <h2 id="building-title">What I’m building</h2>
+          </div>
+
+          <div class="detail-grid detail-grid-three">
+            <article class="surface-card reveal">
+              <p class="card-label">Per-Student Workspaces</p>
+              <p>
+                Managed Linux workspaces with isolated shell access, personal home directories, and a foundation for consistent student-owned development workflows.
+              </p>
+            </article>
+
+            <article class="surface-card reveal">
+              <p class="card-label">Container-Aware Tooling</p>
+              <p>
+                Container-aware environment design so classes can have repeatable toolchains, controlled dependencies, and course-specific setups without making every environment completely custom.
+              </p>
+            </article>
+
+            <article class="surface-card reveal">
+              <p class="card-label">Platform Management</p>
+              <p>
+                A structure that can eventually support resource tiering, operational visibility, and maintainable environment management for students and course teams at broader scale.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="architecture-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-label">/architecture</p>
+            <h2 id="architecture-title">Architecture and platform design focus</h2>
+            <p>
+              The project is interesting to me because it sits at the intersection of systems design, remote environments, security boundaries, and lifecycle thinking. It is not just about getting Linux shells online. It is about building something that can be reasoned about, tested, maintained, and operated responsibly.
+            </p>
+          </div>
+
+          <div class="detail-grid">
+            <article class="terminal-panel reveal">
+              <div class="panel-header">
+                <span class="panel-dot panel-dot-red"></span>
+                <span class="panel-dot panel-dot-amber"></span>
+                <span class="panel-dot panel-dot-green"></span>
+                <span class="panel-title">/projects/devserver/design</span>
+              </div>
+              <div class="panel-body">
+                <ul class="experience-points">
+                  <li>Designing around security boundaries so isolated user environments remain practical to manage and difficult to interfere with across accounts.</li>
+                  <li>Exploring how container-backed class environments could provide reproducible course tooling while still preserving student-owned workspace behavior.</li>
+                  <li>Keeping networking and remote access considerations in view so the platform supports real shell-based workflows without turning into unnecessary complexity.</li>
+                  <li>Thinking about maintainability from the start: what needs to be provisioned, validated, updated, and supported as the platform evolves.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="surface-card reveal">
+              <p class="card-label">Lifecycle Perspective</p>
+              <p>
+                One reason DevServer matters to me is that it naturally pulls in the full engineering lifecycle: architecture, implementation planning, testing surfaces, operational tradeoffs, maintainability, and communication with the people who would actually use or support the system.
+              </p>
+              <p>
+                That makes it a good reflection of the kind of work I want to keep growing into: systems and infrastructure projects where engineering value comes from taking an idea all the way through design, build, validation, and long-term usefulness.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="status-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-label">/status</p>
+            <h2 id="status-title">Current status and future direction</h2>
+          </div>
+
+          <div class="detail-grid">
+            <article class="surface-card reveal">
+              <p class="card-label">Current Status</p>
+              <p>
+                DevServer is an active ongoing build. The work is currently centered on architecture planning, platform shape, environment design, and the practical constraints that matter most for a remote Linux platform intended for academic use.
+              </p>
+            </article>
+
+            <article class="surface-card reveal">
+              <p class="card-label">Why It Matters</p>
+              <p>
+                This project brings together several areas I care about most: Linux systems, containers, networking-aware remote access, platform design, and tooling that makes other people more productive. It is one of the clearest signals of where I want to keep growing as an engineer.
+              </p>
+            </article>
+
+            <article class="surface-card reveal">
+              <p class="card-label">Future Direction</p>
+              <p>
+                Longer term, I want the project to keep moving toward a platform that could support students, course teams, and structured development environments at scale while staying technically grounded, operationally reasonable, and useful in day-to-day coursework and project workflows.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="stack-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-label">/technical-themes</p>
+            <h2 id="stack-title">Technologies and concepts</h2>
+          </div>
+
+          <article class="surface-card reveal">
+            <div class="tech-tags" aria-label="DevServer themes">
+              <span>Linux</span>
+              <span>Containers</span>
+              <span>Developer Platforms</span>
+              <span>Infrastructure</span>
+              <span>Remote Environments</span>
+              <span>Systems Design</span>
+              <span>Security Boundaries</span>
+              <span>Academic Tooling</span>
+              <span>Platform Architecture</span>
+              <span>Maintainability</span>
+              <span>Shell Tooling</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="devserver-cta-title">
+        <div class="container">
+          <div class="section-heading explore-copy reveal">
+            <p class="section-label">/projects/devserver/next</p>
+            <h2 id="devserver-cta-title">Want to explore the rest of the portfolio?</h2>
+            <p>
+              You can jump back to the main projects section, open the interactive terminal for a different view of the site, or reach out if you want to talk through the platform design in more detail.
+            </p>
+            <div class="explore-actions">
+              <a class="button button-primary" href="../../index.html#projects">Back To Projects</a>
+              <a class="button button-secondary" href="../../dive-deeper.html">Open Dive Deeper</a>
+              <a class="button button-ghost" href="../../index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>&copy; <span id="year"></span> Joel Beauregard. Built for GitHub Pages.</p>
+        <p class="footer-accent">
+          <span class="prompt-user">joel@portfolio</span>
+          <span class="prompt-symbol">$</span>
+          <span>open /projects/devserver</span>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../../script.js?v=20260318a"></script>
+</body>
+</html>

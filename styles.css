@@ -930,6 +930,32 @@ select {
   color: var(--accent);
 }
 
+.project-subtitle {
+  margin: 0 0 0.8rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.project-detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.detail-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .skills-carousel {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -1068,7 +1094,9 @@ select {
 
 @media (max-width: 1080px) {
   .hero-grid,
+  .project-detail-hero,
   .about-grid,
+  .detail-grid,
   .contact-grid,
   .education-card {
     grid-template-columns: 1fr;
