@@ -34,7 +34,8 @@ const sectionSelectors = {
   experience: "index.html#experience",
   oracle: "index.html#experience",
   projects: "index.html#projects",
-  devenv: "index.html#projects",
+  devserver: "projects/devserver/",
+  devenv: "projects/devserver/",
   socketscout: "index.html#projects",
   thermo: "index.html#projects",
   captions: "index.html#projects",
@@ -50,7 +51,8 @@ const commandDocs = [
   "focus         current technical interests",
   "experience    detailed experience overview",
   "oracle        Oracle internship details",
-  "devenv        student dev environment platform details",
+  "devserver     DevServer project details",
+  "devenv        alias for DevServer",
   "captions      Tacit Captions research details",
   "projects      featured project overview",
   "socketscout   networking project details",
@@ -82,7 +84,7 @@ const virtualDirectories = {
     "linkedin.link"
   ],
   "~/profile/projects": [
-    "student-dev-environment-platform.md",
+    "devserver.md",
     "socketscout.md",
     "thermo-database.md",
     "multi-modal-sensor-captioning.md"
@@ -91,7 +93,7 @@ const virtualDirectories = {
 
 const fileContents = {
   "~/profile/about.txt":
-    "Joel Beauregard\n\nComputer Science / Software Engineering student at the University of Texas at Arlington focused on systems, networking, cloud infrastructure, cybersecurity, containers, and practical developer tooling. I’m building toward software engineering roles where infrastructure awareness, technical depth, communication, and real-world execution all matter.\n\nMy strongest work sits close to production-minded engineering: network visibility, containerized infrastructure, remote Linux workflows, automation, and developer-facing systems that solve concrete problems. I’m especially interested in software that is reliable, inspectable, and useful in real environments, whether that means networking analytics, managed development environments, or platform-oriented tooling.\n\nAcross internships, research, and personal projects, a consistent theme in my work is building systems that expose hidden behavior clearly and make workflows easier to trust: network analytics at Oracle, platform design for student Linux workspaces, containerized validation pipelines, and practical inspection tooling in projects like SocketScout. I care a lot about taking work through the full lifecycle too: shaping the design, writing the implementation, testing it well, maintaining it thoughtfully, and communicating clearly enough that the people around me can move faster.",
+    "Joel Beauregard\n\nComputer Science / Software Engineering student at the University of Texas at Arlington focused on systems, networking, cloud infrastructure, cybersecurity, containers, and practical developer tooling. I’m building toward software engineering roles where infrastructure awareness, technical depth, communication, and real-world execution all matter.\n\nMy strongest work sits close to production-minded engineering: network visibility, containerized infrastructure, remote Linux workflows, automation, and developer-facing systems that solve concrete problems. I’m especially interested in software that is reliable, inspectable, and useful in real environments, whether that means networking analytics, DevServer, or other platform-oriented tooling.\n\nAcross internships, research, and personal projects, a consistent theme in my work is building systems that expose hidden behavior clearly and make workflows easier to trust: network analytics at Oracle, platform design for student Linux workspaces, containerized validation pipelines, and practical inspection tooling in projects like SocketScout. I care a lot about taking work through the full lifecycle too: shaping the design, writing the implementation, testing it well, maintaining it thoughtfully, and communicating clearly enough that the people around me can move faster.",
   "~/profile/oracle.log":
     "Oracle | Software Engineering Intern | Summer 2025 | Returning Summer 2026\n\nWorked on networking-focused infrastructure for Oracle Private Cloud Appliance, centered on a new Network Traffic Analytics feature for SR-IOV Virtual Cloud Network visibility and observability. The work combined feature research, systems reasoning, architecture support, CI/CD-aware tooling, and production-like test validation.\n\nHighlights:\n- Researched, designed, and documented the feature while analyzing network traffic flows and system constraints that shaped the architecture.\n- Collaborated with senior engineers to prototype the feature and lay the groundwork for a future customer-facing networking capability.\n- Built and validated feature infrastructure using Python and Bash, containerized with Podman, orchestrated in Kubernetes, and integrated into existing CI/CD pipelines.\n- Tested against Cisco switches and Oracle PCA hardware to confirm correctness under realistic network traffic and production-like conditions.\n- Ported 180+ Network Controller tests into a MySQL-backed containerized framework for stronger validation and repeatable CI execution.\n- Improved test performance by about 80% and refactored over half of the ported tests to strengthen diagnostics, edge-case coverage, and error handling.\n\nKey stack:\nPython, Bash, Podman, Kubernetes, MySQL, Cisco networking hardware, Oracle PCA, VCN-focused infrastructure work.",
   "~/profile/experience.log":
@@ -106,8 +108,10 @@ const fileContents = {
     "GitHub profile -> https://github.com/JoelBeau",
   "~/profile/linkedin.link":
     "LinkedIn profile -> https://www.linkedin.com/in/joel-beauregard-b74b54315",
+  "~/profile/projects/devserver.md":
+    "DevServer\nsubtitle -> Student Dev Environment Platform\nstatus -> ongoing active build\npage -> /projects/devserver/\n\nDevServer is a managed student developer environment platform I am designing to provide isolated remote Linux workspaces for coursework, projects, and shell-based workflows. The project is centered on practical developer infrastructure for academic use cases and reflects my interest in systems design, containers, Linux environments, security boundaries, and platform engineering.\n\nHighlights:\n- Designing per-student remote Linux environments with isolated shell access, personal home directories, and platform-managed developer workflows.\n- Exploring class-specific containers and environment orchestration so course tooling can be provisioned in a controlled, repeatable way.\n- Thinking through security boundaries, resource tiering, networking, testing surfaces, and operational simplicity so the platform is useful for real academic workflows rather than just a concept.\n- Treating it as a lifecycle problem, not just an implementation problem: architecture, maintainability, supportability, and how the platform could make students and course teams more productive.\n\nWhy it matters:\nThis is one of the clearest examples of where I want to keep growing as an engineer: developer infrastructure, remote environments, Linux systems, and platform-oriented tooling that solves practical problems for real users.",
   "~/profile/projects/student-dev-environment-platform.md":
-    "Student Dev Environment Platform\nstatus -> ongoing active build\n\nA managed student developer environment platform I am designing to provide isolated remote Linux workspaces for coursework, projects, and shell-based workflows. The project is centered on practical developer infrastructure for academic use cases and reflects my interest in systems design, containers, Linux environments, security boundaries, and platform engineering.\n\nHighlights:\n- Designing per-student remote Linux environments with isolated shell access, personal home directories, and platform-managed developer workflows.\n- Exploring class-specific containers and environment orchestration so course tooling can be provisioned in a controlled, repeatable way.\n- Thinking through security boundaries, resource tiering, networking, testing surfaces, and operational simplicity so the platform is useful for real academic workflows rather than just a concept.\n- Treating it as a lifecycle problem, not just an implementation problem: architecture, maintainability, supportability, and how the platform could make students and course teams more productive.\n\nWhy it matters:\nThis is one of the clearest examples of where I want to keep growing as an engineer: developer infrastructure, remote environments, Linux systems, and platform-oriented tooling that solves practical problems for real users.",
+    "DevServer\nalias -> devserver.md\npage -> /projects/devserver/",
   "~/profile/projects/socketscout.md":
     "SocketScout\nrepo -> https://github.com/JoelBeau/socketscout\n\nA high-performance concurrent port scanner built in Python around asyncio-driven orchestration, per-host state isolation, and modular service interrogation. The project reflects my interest in network visibility, low-level behavior, and practical security tooling that is useful beyond a classroom context.\n\nHighlights:\n- Scans multiple hosts and large port ranges concurrently using non-blocking I/O.\n- Supports TCP connect scanning by default, optional SYN-based scanning, and modular banner grabbing.\n- Separates orchestration, networking primitives, validation, and output formatting cleanly.\n- Emphasizes predictable behavior across multi-target scans through explicit per-host state handling.\n\nWhy it matters:\nSocketScout is one of the clearest examples of the kind of work I enjoy: technically grounded tooling that helps surface hidden network behavior in a way that is practical for debugging, inspection, and security-oriented workflows.",
   "~/profile/projects/thermo-database.md":
@@ -191,7 +195,6 @@ const updateActiveNav = () => {
     education: "education",
     experience: "experience",
     projects: "projects",
-    explore: "projects",
     skills: "skills",
     contact: "contact"
   };
@@ -200,7 +203,7 @@ const updateActiveNav = () => {
 
   sections.forEach((section) => {
     if (atPageEnd && section.id === "contact") {
-      activeKey = "contact";
+      activeKey = sectionNavMap[section.id];
     } else if (offset >= section.offsetTop) {
       activeKey = sectionNavMap[section.id] || activeKey;
     }
@@ -435,7 +438,7 @@ const commandHandlers = {
   help: () => appendResponse(commandDocs.join("\n")),
   whoami: () =>
     appendResponse(
-      "Joel Beauregard | Software engineering student focused on systems, networking, cloud infrastructure, containers, and security-minded tooling.\n\nI’m especially interested in practical engineering work that sits close to infrastructure, developer platforms, containerized applications, and network-aware software rather than purely classroom-scale builds. The projects and experiences on this site are strong examples of that pattern: network analytics at Oracle, a managed student dev environment platform, and developer-facing tooling like SocketScout.\n\nThe common thread is that I like building software that is inspectable, repeatable, and useful in realistic environments, whether that means containerized validation, remote Linux workspaces, networking visibility, or automation that makes engineering workflows easier to trust. I also care about the full lifecycle around that software: design, implementation, testing, maintenance, and clear communication that helps a team be more productive."
+      "Joel Beauregard | Software engineering student focused on systems, networking, cloud infrastructure, containers, and security-minded tooling.\n\nI’m especially interested in practical engineering work that sits close to infrastructure, developer platforms, containerized applications, and network-aware software rather than purely classroom-scale builds. The projects and experiences on this site are strong examples of that pattern: network analytics at Oracle, DevServer, and developer-facing tooling like SocketScout.\n\nThe common thread is that I like building software that is inspectable, repeatable, and useful in realistic environments, whether that means containerized validation, remote Linux workspaces, networking visibility, or automation that makes engineering workflows easier to trust. I also care about the full lifecycle around that software: design, implementation, testing, maintenance, and clear communication that helps a team be more productive."
     ),
   about: () =>
     appendResponse(fileContents["~/profile/about.txt"]),
@@ -447,13 +450,15 @@ const commandHandlers = {
     appendResponse(fileContents["~/profile/experience.log"]),
   oracle: () =>
     appendResponse(fileContents["~/profile/oracle.log"]),
+  devserver: () =>
+    appendResponse(fileContents["~/profile/projects/devserver.md"]),
   devenv: () =>
-    appendResponse(fileContents["~/profile/projects/student-dev-environment-platform.md"]),
+    appendResponse(fileContents["~/profile/projects/devserver.md"]),
   captions: () =>
     appendResponse(fileContents["~/profile/projects/multi-modal-sensor-captioning.md"]),
   projects: () =>
     appendResponse(
-      "Featured projects\n\n1. Student Dev Environment Platform\nActive build focused on isolated remote Linux workspaces for students, with platform-managed shell access, container-aware environment design, and academic developer infrastructure workflows.\nWhy it matters: shows where my interests are heading most directly right now: Linux systems, remote environments, containers, resource management, platform engineering, and the broader lifecycle thinking needed to make developer platforms useful and maintainable.\n\n2. SocketScout\nConcurrent Python port scanner with asyncio-based orchestration, optional SYN scanning, banner grabbing, and clean per-host state isolation.\nrepo -> https://github.com/JoelBeau/socketscout\nWhy it matters: shows my interest in networking internals, low-level behavior, and practical tooling.\n\n3. Thermodynamics Database\nMySQL-backed lookup and automation project using SQL, Bash, CSV ingestion, and Python tooling.\nrepo -> https://github.com/JoelBeau/thermo-database\nWhy it matters: shows structured data modeling, reproducible automation, and systems-minded workflow design.\n\n4. Multi-Modal Sensor Captioning System\nResearch-driven caption rendering system that transformed live sensor data into synchronized WebVTT captions for a multi-modal feedback environment.\nWhy it matters: shows data validation, caption-generation workflows, and research-backed implementation work.\n\nUse 'devenv' for the active platform build, or 'cd projects' and 'cat <file>' for full project dossiers."
+      "Featured projects\n\n1. DevServer\nStudent Dev Environment Platform.\nActive build focused on isolated remote Linux workspaces for students, with platform-managed shell access, container-aware environment design, and academic developer infrastructure workflows.\npage -> /projects/devserver/\nWhy it matters: shows where my interests are heading most directly right now: Linux systems, remote environments, containers, resource management, platform engineering, and the broader lifecycle thinking needed to make developer platforms useful and maintainable.\n\n2. SocketScout\nConcurrent Python port scanner with asyncio-based orchestration, optional SYN scanning, banner grabbing, and clean per-host state isolation.\nrepo -> https://github.com/JoelBeau/socketscout\nWhy it matters: shows my interest in networking internals, low-level behavior, and practical tooling.\n\n3. Thermodynamics Database\nMySQL-backed lookup and automation project using SQL, Bash, CSV ingestion, and Python tooling.\nrepo -> https://github.com/JoelBeau/thermo-database\nWhy it matters: shows structured data modeling, reproducible automation, and systems-minded workflow design.\n\n4. Multi-Modal Sensor Captioning System\nResearch-driven caption rendering system that transformed live sensor data into synchronized WebVTT captions for a multi-modal feedback environment.\nWhy it matters: shows data validation, caption-generation workflows, and research-backed implementation work.\n\nUse 'devserver' for the dedicated project page summary, or 'cd projects' and 'cat <file>' for full project dossiers."
     ),
   socketscout: () =>
     appendResponse(fileContents["~/profile/projects/socketscout.md"]),
@@ -506,7 +511,7 @@ const runCommand = (rawInput) => {
     const target = (args[0] || "").toLowerCase();
 
     if (!target) {
-      appendResponse("usage: open <about|experience|oracle|devenv|projects|captions|skills|education|contact|github|linkedin|resume>");
+      appendResponse("usage: open <about|experience|oracle|devserver|devenv|projects|captions|skills|education|contact|github|linkedin|resume>");
       return;
     }
 
