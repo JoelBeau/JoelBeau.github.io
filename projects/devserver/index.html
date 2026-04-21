@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="DevServer is Joel Beauregard's ongoing student developer environment platform focused on isolated, unified, and remote Linux workspaces, containers, platform design, and practical academic developer tooling."
+    content="DevServer is Joel Beauregard's ongoing university-focused managed Linux development environment platform for coursework, academic programs, and professor-supported development workflows."
   >
   <title>Joel Beauregard | DevServer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,9 +69,9 @@
             </p>
             <p class="section-label">/projects/devserver</p>
             <h1 id="devserver-title">DevServer</h1>
-            <p class="hero-headline">Student Dev Environment Platform</p>
+            <p class="hero-headline">University-Focused Managed Linux Development Platform</p>
             <p class="hero-summary">
-              DevServer is an actively developed multi-user platform focused on giving students isolated remote Linux development environments for coursework, projects, and terminal-based workflows. It reflects how I think about infrastructure, containers, security boundaries, maintainability, and practical developer tooling in academic settings, with scalability in mind for academic programs and institutional development environments.
+              DevServer is an actively developed platform concept for universities and academic programs that need managed Linux development environments for technical coursework. It supports isolated remote shell workflows for student users while keeping the product direction centered on course delivery, professor support, maintainability, and practical developer tooling in university settings.
             </p>
 
             <div class="hero-cta">
@@ -111,7 +111,7 @@
                 </article>
                 <article>
                   <span class="mini-label">primary users</span>
-                  <strong>students, course teams, terminal-first workflows</strong>
+                  <strong>universities, course teams, student users</strong>
                 </article>
                 <article>
                   <span class="mini-label">core concerns</span>
@@ -131,9 +131,9 @@
         <div class="container">
           <div class="section-heading">
             <p class="section-label">/overview</p>
-            <h2 id="overview-title">A practical platform idea shaped by real student workflows.</h2>
+            <h2 id="overview-title">A practical platform idea shaped by academic workflows.</h2>
             <p>
-              The goal is not to build an overengineered lab environment. It is to create a practical, well-bounded platform that gives students reliable access to Linux-based development environments without requiring every course or team to reinvent setup, isolation, and maintenance from scratch.
+              The goal is not to build an overengineered lab environment. It is to create a practical, well-bounded platform that helps universities provide reliable Linux-based development environments without requiring every course team to reinvent setup, isolation, and maintenance from scratch.
             </p>
           </div>
 
@@ -141,14 +141,14 @@
             <article class="surface-card reveal">
               <p class="card-label">Problem / Motivation</p>
               <p>
-                Student development environments are often inconsistent, fragile, or difficult to support across different machines and course requirements. DevServer is my way of thinking through what a cleaner academic developer platform could look like when Linux workflows, shell access, and reproducible tooling are treated as first-class concerns.
+                Development environments for university courses are often inconsistent, fragile, or difficult to support across different student machines and course requirements. DevServer is my way of thinking through what a cleaner academic developer platform could look like when Linux workflows, shell access, assignment support, and reproducible tooling are treated as first-class concerns.
               </p>
             </article>
 
             <article class="surface-card reveal">
               <p class="card-label">Current Direction</p>
               <p>
-                DevServer is being developed as an active infrastructure and platform design project: mapping the architecture, deciding where isolation should live, thinking through resource tiers and operational constraints, and keeping the design grounded in realistic academic workflows rather than abstract platform ideas.
+                DevServer is being developed as an active infrastructure and platform design project: shaping the product around university adoption, professor-facing course workflows, student user isolation, and maintainable academic development environments.
               </p>
             </article>
           </div>
@@ -164,23 +164,23 @@
 
           <div class="detail-grid detail-grid-three">
             <article class="surface-card reveal">
-              <p class="card-label">Per-Student Workspaces</p>
+              <p class="card-label">Course-Ready Workspaces</p>
               <p>
-                Managed Linux workspaces with isolated shell access, personal home directories, and a foundation for consistent student-owned development workflows.
+                Managed Linux workspaces with isolated shell access, personal home directories, and a foundation for consistent coursework and project development across academic programs.
               </p>
             </article>
 
             <article class="surface-card reveal">
-              <p class="card-label">Container-Aware Tooling</p>
+              <p class="card-label">Professor / Course Support</p>
               <p>
-                Container-aware environment design so classes can have repeatable toolchains, controlled dependencies, and course-specific setups without making every environment completely custom.
+                High-level support for structured academic workflows, including assignment distribution, skeleton code, and course-managed development expectations for university settings.
               </p>
             </article>
 
             <article class="surface-card reveal">
               <p class="card-label">Platform Management</p>
               <p>
-                A structure that can eventually support resource tiering, operational visibility, and maintainable environment management for students and course teams at broader scale.
+                A structure that can support university-managed provisioning, course-team oversight, and maintainable environment management as academic programs grow.
               </p>
             </article>
           </div>
@@ -193,7 +193,7 @@
             <p class="section-label">/architecture</p>
             <h2 id="architecture-title">Architecture and platform design focus</h2>
             <p>
-              The project is interesting to me because it sits at the intersection of systems design, remote environments, security boundaries, and lifecycle thinking. It is not just about getting Linux shells online. It is about building something that can be reasoned about, tested, maintained, and operated responsibly.
+              The project is interesting to me because it sits at the intersection of systems design, remote environments, security boundaries, and lifecycle thinking. It is not just about getting Linux shells online. It is about designing a university-oriented platform that can be reasoned about, tested, maintained, and used to support real coursework.
             </p>
           </div>
 
@@ -207,10 +207,10 @@
               </div>
               <div class="panel-body">
                 <ul class="experience-points">
-                  <li>Designing around security boundaries so isolated user environments remain practical to manage and difficult to interfere with across accounts.</li>
-                  <li>Exploring how container-backed class environments could provide reproducible course tooling while still preserving student-owned workspace behavior.</li>
-                  <li>Keeping networking and remote access considerations in view so the platform supports real shell-based workflows without turning into unnecessary complexity.</li>
-                  <li>Thinking about maintainability from the start: what needs to be provisioned, validated, updated, and supported as the platform evolves.</li>
+                  <li>Designing around security boundaries so isolated student user environments remain practical for university and course-team administration.</li>
+                  <li>Considering how course-specific tooling could support repeatable academic workflows while keeping the public product direction high-level and maintainable.</li>
+                  <li>Keeping remote access and terminal-based workflows in view so the platform remains useful for real CS and technical coursework.</li>
+                  <li>Thinking about maintainability from the start: what needs to be configured, validated, updated, and supported as the platform evolves.</li>
                 </ul>
               </div>
             </article>
@@ -218,7 +218,7 @@
             <article class="surface-card reveal">
               <p class="card-label">Lifecycle Perspective</p>
               <p>
-                One reason DevServer matters to me is that it naturally pulls in the full engineering lifecycle: architecture, implementation planning, testing surfaces, operational tradeoffs, maintainability, and communication with the people who would actually use or support the system.
+                One reason DevServer matters to me is that it naturally pulls in the full engineering lifecycle: product framing, implementation planning, testing surfaces, operational tradeoffs, maintainability, and communication with the instructors, students, and technical stakeholders who would actually use or support the system.
               </p>
               <p>
                 That makes it a good reflection of the kind of work I want to keep growing into: systems and infrastructure projects where engineering value comes from taking an idea all the way through design, build, validation, and long-term usefulness.
@@ -239,21 +239,21 @@
             <article class="surface-card reveal">
               <p class="card-label">Current Status</p>
               <p>
-                DevServer is an active ongoing build. The work is currently centered on architecture planning, platform shape, environment design, and the practical constraints that matter most for a remote Linux platform intended for academic use.
+                DevServer is an active ongoing build. The work is currently centered on product direction, platform shape, environment design, and the practical constraints that matter most for a university-focused remote Linux platform.
               </p>
             </article>
 
             <article class="surface-card reveal">
               <p class="card-label">Why It Matters</p>
               <p>
-                This project brings together several areas I care about most: Linux systems, containers, networking-aware remote access, platform design, and tooling that makes other people more productive. It is one of the clearest signals of where I want to keep growing as an engineer.
+                This project brings together several areas I care about most: Linux systems, containers, remote development workflows, platform design, and tooling that makes students, professors, and course teams more productive. It is one of the clearest signals of where I want to keep growing as an engineer.
               </p>
             </article>
 
             <article class="surface-card reveal">
               <p class="card-label">Future Direction</p>
               <p>
-                Longer term, I want the project to keep moving toward a platform that could support students, course teams, and structured development environments at scale while staying technically grounded, operationally reasonable, and useful in day-to-day coursework and project workflows.
+                Longer term, I want the project to keep moving toward a platform that could support universities, course teams, and structured development environments while staying technically grounded, operationally reasonable, and useful in day-to-day coursework and project workflows.
               </p>
             </article>
           </div>
