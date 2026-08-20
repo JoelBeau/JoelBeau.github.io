@@ -172,6 +172,18 @@ select {
   color: var(--text-soft);
 }
 
+.experience-period-label {
+  margin: 1.75rem 0 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent) !important;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -1185,7 +1197,13 @@ select {
   }
 
   .section-kicker {
+    align-items: flex-start;
     white-space: normal;
+  }
+
+  .section-kicker .status-dot {
+    flex: 0 0 auto;
+    margin-top: 0.35rem;
   }
 
 }
